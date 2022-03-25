@@ -1,0 +1,109 @@
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<style>
+    body {
+        font-family: 'Oswald', sans-serif !important;
+        font-size: xx-large;
+    }
+    .main-heading {
+    background-color: blue;
+    width:80px;
+    height:80px;
+
+    }
+    .span12{
+    padding:1rem;
+    background: url('med.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height:609px;
+    background-size: cover;
+    z-index:1;
+
+    }
+
+    .icon { float: right; width: 75px; }
+    .icon_back{display: block; margin-left: auto; margin-right: auto;}
+    .hover{
+        background-color:rgb(185, 212, 226);
+        position:absolute;
+        top:60px;
+        width:640px; 
+        height:450px;
+        z-index:3;
+        position: absolute;
+        opacity: 0.95;
+        align-items: center;
+
+    }
+    .on-hover{
+        cursor:pointer;
+        text-decoration: none; 
+        color:white;
+        height:200px;
+    }
+    a:hover {
+    background-color: rgb(111, 197, 240);
+    height:60px;
+    }
+
+</style>
+
+<script type="text/javascript">
+        function showDiv(toggle){
+        document.getElementById(toggle).style.display = 'block';
+    }
+ </script> 
+ 
+<body>
+    <div class = "container-fluid"><!--main screen-->
+        <div class="row"><!--whole screen row-->
+            <div class="span12 col-12"><!--whole 1 column in that row-->
+                <div class="container h-100 d-flex flex-column"><!--a container within that column-->
+                        <div class="row flex-grow-1" style="font-style: italic;font-family:Arial, Helvetica, sans-serif; color: white;"><!--divide screen into rows-->
+                            <div class="col-md-1">
+                                <div class="position-absolute top-10 " style="position:absolute; left:1030px;" ><a href = "/login"style="text-decoration:none; color:white;"><h5>Login</h5></a></div>
+                                <div class = "btn-link on-hover "  name="answer" onclick="showDiv('toggle')" style="position:absolute; left:1090px;"><h5>&nbspSignUp</h5></div> 
+                                <div Id="toggle"  class = "hover" style="display:none;">
+                                    <div class = "icon icon_back" style="color:rgb(16, 22, 22);  position:absolute; left:135px; top:73px ;padding-left:2px; padding-top:20px";><i class="fa-solid fa-2x fa-user-large"></i>
+                                    </div>
+                                    <h1 class="display-1" style="color:rgb(16, 22, 22); position:absolute;top: 80px; left:223px" ><a href="/admin_signup"  style="color:rgb(16, 22, 22);font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-decoration: none;">Admin</a></h1><br><br><br><br>
+                                    <div class = "icon icon_back" style="color:rgb(16, 22, 22);  position:absolute; left:135px; top:150px ;padding-left:2px; padding-top:20px";><i class="fa-solid fa-2x fa-hospital-user"></i>
+                                    </div>
+                                    <h1 class="display-1" style="color:rgb(16, 22, 22); position:absolute;top: 160px; left:210px" ><a href="/patient_signup" style="color:rgb(16, 22, 22); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;text-decoration: none;">Patient</a></h1><br><br>
+                                    <!--<div class = "icon icon_back" style="color:rgb(16, 22, 22);  position:absolute; left:130px; top:225px ;padding-left:2px; padding-top:20px";><i class="fa-solid fa-2x fa-user-nurse"></i></i>
+                                    </div>
+                                    <h1 class="display-2" style="color:rgb(16, 22, 22); position:absolute;top: 240px; left:204px" ><a href="pharmacist_signup.html" style="color:rgb(16, 22, 22); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;text-decoration: none;">Pharmacist</a></h1><br>-->
+                                </div>
+                                
+                            </div>           
+                         </div><!--row1-->
+                        <div class="row" >   <!--row2-->
+                       
+                        <div class="col-md-1 offset-md-7 align-self-center">
+                            <div class = "icon icon_back " style="color:rgb(16, 22, 22);  padding-left: 19px; padding-bottom:2px";>
+                                <i class="fa-solid fa-2x fa-hand-holding-medical"></i>
+                                
+                            </div>
+                        </div>   
+                        <div class="col-md-4 offset-md-0"><h1 class="display-1" style="color:rgb(16, 22, 22);" >MediCare</h1></div>
+                    </div>
+                    <div class="row flex-grow-1 span6"><!--row3-->
+                        <div class="col-md-4 offset-md-8"><h3 style="color:rgb(16, 22, 22); font-style: italic;" >Because Your Life Matters.</h3>
+                        </div>
+                    </div>  
+                </div>              
+            </div> 
+           
+        </div>
+        
+    </div>
+   
+   
+   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js">  
+   </script>
+    
+</body>
+</html>

@@ -1,0 +1,216 @@
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+<style>
+  body{
+     background-image: url('4.jpg');
+     padding:1rem;
+     background-repeat: no-repeat;
+     height:940px;
+     background-size: cover;
+
+  }
+.gradient-custom {
+ 
+  background-color: #58c1f1;
+  background: -webkit-linear-gradient(to bottom right, rgb(71, 151, 197), rgb(81, 135, 235));
+  background: linear-gradient(to bottom right, rgb(86, 122, 219), rgb(63, 179, 214));
+
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+  
+}
+.card-registration .select-arrow {
+  top: 13px;
+  
+}
+
+
+</style>
+
+<body>
+  <section class="vh-100 ">
+      <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+              <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient's Login Credentials</h3>
+                <form  method="post" action="/patient_signup">
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input name="Name"type="text" id="Name" class="form-control form-control-lg" required />
+                        <label class="form-label" for="Name">Name</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input name="Email"type="email" id="Email" class="form-control form-control-lg" required />
+                        <label class="form-label" for="Email">Email</label>
+                      </div>
+    
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4 d-flex align-items-center">
+    
+                      <div class="form-outline datepicker w-100">
+                        <input
+                          name="UserName"
+                          type="text"
+                          class="form-control form-control-lg"
+                          id="UserName"
+                          required
+                        />
+                        <label for="UserName" class="form-label">UserName</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4">
+    
+                      <h6 class="mb-2 pb-1">Gender: </h6>
+    
+                      <div class="form-check form-check-inline">
+                        <input
+                          
+                          class="form-check-input"
+                          type="radio"
+                          name="Gender"
+                          id="femaleGender"
+                          value="Female"
+                          checked
+                        />
+                        <label class="form-check-label" for="femaleGender">Female</label>
+                      </div>
+    
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="Gender"
+                          id="maleGender"
+                          value="Male"
+                        />
+                        <label class="form-check-label" for="maleGender">Male</label>
+                      </div>
+    
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="Gender"
+                          id="otherGender"
+                          value="Other"
+                        />
+                        <label class="form-check-label" for="otherGender">Other</label>
+                      </div>
+    
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input name="CNIC"type="text" id="CNIC" class="form-control form-control-lg required" />
+                        <label class="form-label" for="CNIC">CNIC</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input name="PhoneNumber"type="tel" id="phoneNumber" class="form-control form-control-lg" required/>
+                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                      </div>
+    
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+  
+                     
+                      <div class="form-outline flex-fill mb-0">
+                          <input name="Password" type="password" name = "pswrd_1" id="pswrd_1" class="form-control"  required/>
+                          <label class="form-label" for="Password">Password</label>
+                       
+                      </div>
+                   </div>
+                    <div class="col-md-6 mb-4 d-flex align-items-center">
+      
+                      <div class="form-outline datepicker w-100">
+                        <input
+                          name="Address"
+                          type="text"
+                          class="form-control form-control-lg"
+                          id="Address"
+                          required
+                        />
+                        <label for="Address" class="form-label">Address</label>
+                      </div>
+    
+                    </div>        
+    
+                </div>
+
+
+                  <div class="row">
+                     
+                  </div>
+    
+                  <div class="mt-4 pt-2">
+                    <input name="Submit"class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                    &nbsp&nbsp
+                  
+                      <button name="Back" type="button" class="btn btn-primary btn-lg"><a href = "index.html" style=" color:white; text-decoration:none;">Back</a></button>
+                  </div>
+    
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js">  
+
+function checkForm(form)
+{
+
+if(form.pswrd_1.value != "" && form.pswrd_1.value == form.pswrd_2.value) {
+  if(form.pswrd_1.value.length < 6) {
+    alert("Error: Password must contain at least six characters!");
+    form.pswrd_1.focus();
+    return false;
+  }
+  if(form.pswrd_1.value == form.username.value) {
+    alert("Error: Password must be different from Username!");
+    form.pswrd_1.focus();
+    return false;
+  }
+}
+  
+ else {
+  alert("Error: Please check that you've entered and confirmed your password!");
+  form.pswrd_1.focus();
+  return false;
+}
+
+
+return true;
+}
+
+</script>
+</body>
+</html>
