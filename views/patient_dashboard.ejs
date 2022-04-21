@@ -31,7 +31,9 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-
+    <title>
+      <%= title %>
+    </title>
   </head>
 
 <body>
@@ -90,6 +92,8 @@
       </nav><!-- .navbar -->
 
       <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
+      <a href="/update_patient/<%= userID %>" class="appointment-btn"><span class="d-none d-md-inline">Manage Account</span></a>
+      <a href="/" class="appointment-btn"><span class="d-none d-md-inline">Sign Out</span></a>
 
     </div>
   </header><!-- End Header -->
@@ -97,7 +101,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
-      <h1> <%= User %>, Welcome to MediCare</h1>
+      <h1> <%= UserObj.Name %>, Welcome to MediCare</h1>
       <h2>A new system to get the best Healthcare</h2>
       <a href="#about" class="btn-get-started scrollto">Get Started</a>
     </div>
@@ -372,7 +376,6 @@
           <h2>Departments</h2>
           <p>Discover the multiple departments and divisions MediCare has to offer.</p>
         </div>
-
         <div class="row gy-4">
           <div class="col-lg-3">
             <ul class="nav nav-tabs flex-column">
@@ -842,7 +845,5 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>
