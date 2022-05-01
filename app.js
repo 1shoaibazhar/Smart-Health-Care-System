@@ -58,6 +58,39 @@ app.get("/admin_signup", (req, res) => {
   res.render("admin_signup", { title: "Employees SignUp" });
 });
 
+
+
+//***********************to load page  */
+app.get("/admin_dashboard", (req, res) => {
+   res.render("admin_dashboard",{ title: "Admin Dashboard" });
+ });
+
+ //***********************to load page  */
+app.get("/display", (req, res) => {
+  res.render("display",{ title: "Display Patient/Employee" });
+});
+ 
+
+
+//***********************page redirection link anchor tag/ normal buttons outside form  */
+ app.get("/search", (req, res) => {
+ res.render("search",{ title: "Search Patient/Employee" });
+ });
+
+
+//************form button  */
+ app.post("/search", (req, res) => {
+   res.render("admin_dashboard");
+ });
+
+ //************form button  */
+ app.post("/search", (req, res) => {
+  res.render("display");
+});
+
+
+
+
 app.post("/admin_signup", (req, res) => {
   var myData = new employee(req.body);
   myData
