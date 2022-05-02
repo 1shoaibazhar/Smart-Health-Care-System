@@ -77,6 +77,14 @@
 	  top: 0
   }
 
+  .custom-btn{
+    box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233)!important;
+  }
+  .custom-btn:hover{
+    background-color: #3234a8;;
+    color: white;
+  }
+
 </style>
 
 <body>
@@ -132,17 +140,12 @@
                   </div>
                   <p style="color: red;"><%= unavailable %></p>
     
-                  <div class="mt-4 pt-2 justify-content-center">
-                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <input name="Submit"class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                  <div class="mt-1 pt-4 pe-5 ps-0 ml-5">
+                    &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input name="Submit"class="btn btn-primary btn-lg custom-btn" type="submit" value="Submit" />
                     &nbsp&nbsp
                   
-                      <button name="Back" type="button" class="btn btn-primary btn-lg" onclick="history.back()" style=" color:white; text-decoration:none;" >Back</button>
-                      <div class="checkbox">
-                          <br>
-                          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                          <label><input name="Remember me" type="checkbox" name="remember"> Remember me</label>
-                        </div>
+                      <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.back()" style=" color:white; text-decoration:none;" >Back</button>
                   </div>
 
                 </form>
