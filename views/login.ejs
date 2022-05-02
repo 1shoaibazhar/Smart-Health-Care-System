@@ -4,7 +4,6 @@
 <style>
   body{
      background-image: url('6.jpg');
-     padding:1rem;
      background-repeat: no-repeat;
      height:609px;
      background-size: cover;
@@ -30,10 +29,83 @@
   
 }
 
+  a:hover {
+  background-color: rgb(46, 49, 208);
+  height:40px;
+  padding-top: 10px!important;
+  }
+
+  .menu-bar{
+    background-image: linear-gradient(-90deg, #5d7a86, #022d50);
+    width:100% ;
+    height:50px;
+  }
+  .custom-btn{
+    box-shadow: 0 4px 8px 0 rgb(9, 97, 228), 0 6px 20px 0 rgb(117, 8, 233)!important;
+  }
+  .custom-btn:hover{
+    background-color: #3234a8;;
+    color: white;
+  }
+  .nav-link{
+    font-size: 20px;
+    margin: 0px;
+    color: white!important;
+    font-weight: 500;
+  }
+  .navbar-nav{
+    text-align: right;
+    margin-right: 0px;
+  }
+  .menu-bar .navbar-toggler{
+    padding-right: 10px;
+    outline: none!important;
+    border: none!important;
+  }
+  .navbar .fa{
+    color: #ffff;
+    font-size: 26px;
+  }
+  .nav-link:hover{
+    font-weight: 600;
+    border-bottom: 1px solid rgba(158, 175, 179, 0.902);
+  }
+
+  .sticky{
+    position: -webkit-sticky;
+  	position: sticky;
+	  top: 0
+  }
+
+  .custom-btn{
+    box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233)!important;
+  }
+  .custom-btn:hover{
+    background-color: #3234a8;;
+    color: white;
+  }
 
 </style>
 
 <body>
+
+  <div class="header sticky">
+    <div class="menu-bar">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/"><i>Return to Home</i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
   <section class="vh-100 ">
       <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
@@ -68,17 +140,12 @@
                   </div>
                   <p style="color: red;"><%= unavailable %></p>
     
-                  <div class="mt-4 pt-2 justify-content-center">
-                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <input name="Submit"class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                  <div class="mt-1 pt-4 pe-5 ps-0 ml-5">
+                    &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input name="Submit"class="btn btn-primary btn-lg custom-btn" type="submit" value="Submit" />
                     &nbsp&nbsp
                   
-                      <button name="Back" type="button" class="btn btn-primary btn-lg" onclick="history.back()" style=" color:white; text-decoration:none;" >Back</button>
-                      <div class="checkbox">
-                          <br>
-                          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                          <label><input name="Remember me" type="checkbox" name="remember"> Remember me</label>
-                        </div>
+                      <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.back()" style=" color:white; text-decoration:none;" >Back</button>
                   </div>
 
                 </form>

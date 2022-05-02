@@ -101,15 +101,32 @@ app.get("/display", (req, res) => {
             res.render("predict_tuberculosis",{ title: "Predict Tuberculosis" });
       });
 
-//************form button  */
- app.post("/search", (req, res) => {
-   res.render("admin_dashboard");
- });
-
  //************form button  */
  app.post("/search", (req, res) => {
-  res.render("display");
-});
+    console.log(req.body);
+
+    const name = req.body.Name;
+    
+    if (req.body.Designation == 'Patient')
+    {
+      patient.find({Name : name}, function (err, doc){
+        if (!err){
+          res.render("display",{ title: "Search Results" , users : doc, Designation: "Patient"});
+        }
+      });
+    }
+    else
+    {
+      employee.find({Name : name, Profession: req.body.Designation}, function (err, doc){
+        if (!err){
+          res.render("display",{ title: "Search Results" , users : doc, Designation: "Employee"});
+        }
+      });
+    }
+
+
+   
+ });
 
 app.post("/predict_heartattack", (req, res) => {
   res.render("patient_dashboard");
@@ -190,7 +207,6 @@ app.get("/delete_patient/:id", (req,res)=>{
 
 // For updating patient data
 app.post("/update_info_patient", (req,res)=>{
-  console.log(req.body);
   let patient_username = req.body.UserName;
   
   patient.findOne({UserName : patient_username}, function (err, doc){
@@ -415,7 +431,12 @@ app.post("/login", async(req, res) => {
   
   await admin.findOne({UserName : UserName, Password : Password}, function (err, doc){
     if (doc){
-      res.render("patient_dashboard", {title: title_display, User : UserName, userID: doc._id, UserObj: doc});
+      res.render("admin_dashboard", {
+        title: title_display,
+        User: UserName,
+        userID: doc._id,
+        UserObj: doc,
+      });
       res.end();
     }
   }).clone().catch(function(err){ console.log(err)});

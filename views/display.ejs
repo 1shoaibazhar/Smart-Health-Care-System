@@ -32,7 +32,7 @@
 
       <style>
         #header{
-          background-color: #baf260!important; 
+          background-color: #e33083!important; 
         }
         #topbar{
           background-color: rgb(245, 239, 239);
@@ -68,6 +68,16 @@
 a.button:hover{
      background: rgb(212, 55, 37);
 }
+
+  
+.custom-btn{
+  box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233)!important;
+}
+.custom-btn:hover{
+  background-color: #3234a8;;
+  color: white;
+}
+
       </style>
 
 
@@ -98,24 +108,11 @@ a.button:hover{
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="patient_dashboard.html">MediCare Employee</a></h1>
+      <h1 class="logo me-auto"><a href="patient_dashboard.html">MediCare Admin</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
-          <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
       <a href="/search" class="appointment-btn"><span class="d-none d-md-inline"></span>Search Patient/Employee</a>
-      <a href="/update_employee/" class="appointment-btn"><span class="d-none d-md-inline">Manage Account</span></a>
       <a href="/" class="appointment-btn"><span class="d-none d-md-inline">Sign Out</span></a>
     </div>
   </header><!-- End Header -->
@@ -147,24 +144,49 @@ a.button:hover{
                        </div>
                 </div>
                 <hr size="4px">
-                <div class="row">
-                    <div class="col-md-3 mb-4">  
-                    <h6>Maria Hassan</h6> 
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <h6>Lab Technician</h6>
-                       </div>
-                       <div class="col-md-3 offset-md-3 mb-4">
-        
-                        <button name="View" type="button" class="btn btn-primary btn-sm"><a href = "#" style=" color:white; text-decoration:none;">View</a></button>
-                        <button name="Delete" type="button" class="btn btn-primary btn-sm"><a href = "#" style=" color:white; text-decoration:none;" >Delete</a></button>      
-                       </div>
-                </div>
+                  <% if (users.length > 0) { %>  
+                  
+                      <% users.forEach(user => { %>
+
+                        <div class="row">
+                          <div class="col-md-3 mb-4">  
+                          <h6><%= user.Name %></h6> 
+                          </div>
+                          <div class="col-md-3 mb-4">
+                            <% if (Designation == "Patient"){ %>    
+                              <h6>Patient</h6>
+                            <% } else { %>
+                              <h6><%= user.Profession %> </h6>
+
+                            <% } %>  
+                          </div>
+                             <div class="col-md-3 offset-md-3 mb-4">
+              
+                              <button style="background-color: green;" name="View" type="button" class="btn btn-primary btn-sm"><a href = "#" style=" color:white; text-decoration:none;">View</a></button>
+                              <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href = "#" style=" color:white; text-decoration:none;" >Delete</a></button>      
+                             </div>
+                        </div>
+
+                      <% }) %>
+
+                  <% } else { %>
+
+                    <p style="color: red"> There are no matching users</p>
+
+
+                  <% } %>
+
+
                     &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp
                      
                   <div class="mt-4 pt-2">
                     
-                    <button name="Back" type="button" class="btn btn-primary btn-lg"><a href = "/admin_dashboard" style=" color:white; text-decoration:none;" >Back to Dashboard</a></button>
+                    
+                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn"><a href = "/search" style=" color:white; text-decoration:none;" >Back to Search</a></button>
+                      &nbsp&nbsp&nbsp
+                    
+
+                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn"><a href = "/admin_dashboard" style=" color:white; text-decoration:none;" >Back to Dashboard</a></button>
                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     
                   </div>
