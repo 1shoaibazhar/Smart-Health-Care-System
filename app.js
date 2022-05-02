@@ -54,8 +54,16 @@ app.get("/patient_signup", (req, res) => {
   res.render("patient_signup", { title: "Patient SignUp" });
 });
 
+app.get("/view_patient", (req, res) => {
+  res.render("view_patient", { title: "View Patient" });
+});
+
 app.get("/admin_signup", (req, res) => {
   res.render("admin_signup", { title: "Employees SignUp" });
+});
+
+app.get("/view_employee", (req, res) => {
+  res.render("view_employee", { title: "View Employee" });
 });
 
 
@@ -132,6 +140,10 @@ app.post("/predict_heartattack", (req, res) => {
   res.render("patient_dashboard");
 });
 
+app.post("/search", (req, res) => {
+  res.render("admin_dashboard");
+});
+
 app.post("/predict_diabetes", (req, res) => {
   res.render("patient_dashboard");
 });
@@ -150,6 +162,22 @@ app.post("/predict_malaria", (req, res) => {
 
 app.post("/predict_tuberculosis", (req, res) => {
   res.render("patient_dashboard");
+});
+
+app.post("/view_patient", (req, res) => {
+  res.render("display");
+});
+
+app.post("/view_patient", (req, res) => {
+  res.render("admin_dashboard");
+});
+
+app.post("/view_employee", (req, res) => {
+  res.render("admin_dashboard");
+});
+
+app.post("/view_employee", (req, res) => {
+  res.render("display");
 });
 
 app.post("/admin_signup", (req, res) => {

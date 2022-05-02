@@ -32,7 +32,7 @@
 
       <style>
         #header{
-          background-color: #baf260!important; 
+          background-color: #e33083!important; 
         }
         #topbar{
           background-color: rgb(245, 239, 239);
@@ -66,6 +66,14 @@
 
 }
 
+.custom-btn{
+    box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233)!important;
+  }
+  .custom-btn:hover{
+    background-color: #3234a8;;
+    color: white;
+  }
+
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
   font-size: 1rem;
   line-height: 2.15;
@@ -77,13 +85,6 @@
   top: 13px;
   
 }
-.custom-btn{
-    box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233)!important;
-  }
-  .custom-btn:hover{
-    background-color: #3234a8;;
-    color: white;
-  }
 a.button:hover{
      background: rgb(212, 55, 37);
 }
@@ -100,7 +101,8 @@ a.button:hover{
         document.getElementById(toggle).style.display = 'block';
     }
  </script> 
-  </head>
+</style>
+</head>
 
 <body>
 <!-- ======= Top Bar ======= -->
@@ -119,132 +121,156 @@ a.button:hover{
     </div>
   </div>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
+ <!-- ======= Header ======= -->
+ <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="patient_dashboard.html">MediCare</a></h1>
+      <h1 class="logo me-auto"><a href="/patient_dashboard">MediCare Admin</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
-          <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <!-- <a href="#" class="appointment-btn"><span class="d-none d-md-inline"></span>Make an Appointment</a>
-      <a href="/update_employee/" class="appointment-btn"><span class="d-none d-md-inline">Manage Account</span></a> -->
+      <a href="/search" class="appointment-btn"><span class="d-none d-md-inline"></span>Search Patient/Employee</a>
       <a href="/" class="appointment-btn"><span class="d-none d-md-inline">Sign Out</span></a>
     </div>
   </header><!-- End Header -->
 
 <br><br><br>
+       
     <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
           <div class="col-12 col-lg-9 col-xl-7">
             <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
               <div class="card-body p-4 p-md-5">
                   
-                <h3 class="mb-2 pb-1 pb-md-0 mb-md-2">Appendicitis</h3>
-                <h5 class="mb-4 pb-2 pb-md-0 mb-md-5">Please select your symptoms</h5>
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient Details</h3>
                 <form  method="post" action="/update_info_patient">
     
                   <div class="row">
-                   
-                    
-                    <div class="col-md-5 mb-4">
+                    <div class="col-md-6 mb-4">
     
-                      <h6 class="mb-2 pb-1">Symptoms: </h6>
+                      
+                      <div class="form-outline datepicker w-100">
+                        <input name="UserName" type="text" class="form-control form-control-lg" id="UserName" placeholder="" value="" />
+                        <label for="UserName" class="form-label">Username</label>
+                      </div>
+
+                      
+    
+                    </div>
+                    <div class="col-md-6 mb-4">
+    
+                      <div class="form-outline">
+                        <input name="Email" type="email" id="Email" placeholder="" class="form-control form-control-lg"  />
+                        <label class="form-label" for="Email">Email</label>
+                      </div>
+    
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4 d-flex align-items-center">
+                      <div class="form-outline">
+                        <input name="Name" type="text" placeholder="" id="Name" class="form-control form-control-lg"  />
+                        <label class="form-label"  for="Name">Name</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4">
+    
+                      <h6 class="mb-2 pb-1">Gender: </h6>
     
                       <div class="form-check form-check-inline">
                         <input
                           
                           class="form-check-input"
-                          type="checkbox"
-                          name="Symptoms"
-                          id="Nausea"
-                          value="Nausea"
-                        
-
-                          checked
+                          type="radio"
+                          name="Gender"
+                          id="femaleGender"
+                          value="Female"
                           
                         />
-                        <label class="form-check-label" for="Nausea">Nausea</label>
-                      </div>
-                      <br>
-                      <div class="form-check form-check-inline">
-                        <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="Symptoms"
-                        id="Constipation"
-                        value="Constipation"
-                          
-                        />
-                        <label class="form-check-label" for="Constipation">Constipation</label>
+                        <label class="form-check-label" for="femaleGender">Female</label>
                       </div>
     
                       <div class="form-check form-check-inline">
                         <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="Symptoms"
-                        id="Diarrhoea"
-                        value="Diarrhoea"
+                          class="form-check-input"
+                          type="radio"
+                          name="Gender"
+                          id="maleGender"
+                          value="Male"
                           
                         />
-                        <label class="form-check-label" for="Diarrhoea">Diarrhoea</label>
-                      </div>
-
-                      <div class="form-check form-check-inline">
-                        <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="Symptoms"
-                        id="High Temperature"
-                        value="High Temperature"
-                          
-                        />
-                        <label class="form-check-label" for="High Temperature">High Temperature</label>
-                      </div>
-
-                      <div class="form-check form-check-inline">
-                        <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="Symptoms"
-                        id="Loss of Appetite"
-                        value="Loss of Appetite"
-                          
-                        />
-                        <label class="form-check-label" for="Loss of Appetite">Loss of Appetite</label>
+                        <label class="form-check-label" for="maleGender">Male</label>
                       </div>
     
-                    </div>       
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="Gender"
+                          id="otherGender"
+                          value="Other"
+                          
+                        />
+                        <label class="form-check-label" for="otherGender">Other</label>
+                      </div>
+    
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input name="CNIC"type="text" id="CNIC" placeholder="" class="form-control form-control-lg " />
+                        <label class="form-label" for="CNIC">CNIC</label>
+                      </div>
+    
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+    
+                      <div class="form-outline">
+                        <input name="PhoneNumber"type="tel" id="phoneNumber" placeholder="" class="form-control form-control-lg" />
+                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                      </div>
+    
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+  
+                     
+                      <div class="form-outline flex-fill mb-0">
+                          <input name="Password" type="password" name = "pswrd_1" placeholder="" id="pswrd_1" class="form-control"  />
+                          <label class="form-label" for="Password">Password</label>
+                       
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-4 d-flex align-items-center">
+      
+                      <div class="form-outline datepicker w-100">
+                        <input
+                          name="Address"
+                          type="text"
+                          class="form-control form-control-lg"
+                          id="Address"
+                          placeholder=""
+                        />
+                        <label for="Address" class="form-label">Address</label>
+                      </div>
+    
+                  </div>        
     
                 </div>
     
                   <div class="mt-4 pt-2">
-                    <button name="Predict" type="button" class="btn btn-primary btn-lg custom-btn" onclick="showDiv('toggle')"><a href = "#" style=" color:white; text-decoration:none;">Predict</a></button>
+                    <button name="Predict" type="button" class="btn btn-primary btn-lg custom-btn" onclick="showDiv('toggle')"><a href = "/display" style=" color:white; text-decoration:none;">Back to Search Results</a></button>
                     &nbsp&nbsp
                   
                     <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.back()">Back to Dashboard</button>
                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    
-                  </div>
-
-                  <br><br>
-                  <div Id="toggle" class="predict"  style="display:none;">
-                    
-                   <h5 style="color:red;display:inline;">Prediction : </h5>
-                   <h5 style="display:inline;">You have a 50% chance of having Appendicitis </h5>
+                     
                   </div>
     
               </form>
@@ -252,7 +278,7 @@ a.button:hover{
             </div>
           </div>
         </div>
-    </div> 
+      </div>
     <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -340,6 +366,8 @@ a.button:hover{
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>  
+  <script src="assets/js/main.js"></script> 
+      
+    
 </body>
 </html>
