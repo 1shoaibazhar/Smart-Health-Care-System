@@ -4,7 +4,6 @@
 <style>
   body{
      background-image: url('6.jpg');
-     padding:1rem;
      background-repeat: no-repeat;
      height:609px;
      background-size: cover;
@@ -30,10 +29,75 @@
   
 }
 
+  a:hover {
+  background-color: rgb(46, 49, 208);
+  height:40px;
+  padding-top: 10px!important;
+  }
+
+  .menu-bar{
+    background-image: linear-gradient(-90deg, #5d7a86, #022d50);
+    width:100% ;
+    height:50px;
+  }
+  .custom-btn{
+    box-shadow: 0 4px 8px 0 rgb(9, 97, 228), 0 6px 20px 0 rgb(117, 8, 233)!important;
+  }
+  .custom-btn:hover{
+    background-color: #3234a8;;
+    color: white;
+  }
+  .nav-link{
+    font-size: 20px;
+    margin: 0px;
+    color: white!important;
+    font-weight: 500;
+  }
+  .navbar-nav{
+    text-align: right;
+    margin-right: 0px;
+  }
+  .menu-bar .navbar-toggler{
+    padding-right: 10px;
+    outline: none!important;
+    border: none!important;
+  }
+  .navbar .fa{
+    color: #ffff;
+    font-size: 26px;
+  }
+  .nav-link:hover{
+    font-weight: 600;
+    border-bottom: 1px solid rgba(158, 175, 179, 0.902);
+  }
+
+  .sticky{
+    position: -webkit-sticky;
+  	position: sticky;
+	  top: 0
+  }
 
 </style>
 
 <body>
+
+  <div class="header sticky">
+    <div class="menu-bar">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/"><i>Return to Home</i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
   <section class="vh-100 ">
       <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
