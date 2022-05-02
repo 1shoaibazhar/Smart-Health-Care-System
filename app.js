@@ -371,7 +371,12 @@ app.post("/login", async(req, res) => {
   
   await admin.findOne({UserName : UserName, Password : Password}, function (err, doc){
     if (doc){
-      res.render("patient_dashboard", {title: title_display, User : UserName, userID: doc._id, UserObj: doc});
+      res.render("admin_dashboard", {
+        title: title_display,
+        User: UserName,
+        userID: doc._id,
+        UserObj: doc,
+      });
       res.end();
     }
   }).clone().catch(function(err){ console.log(err)});
