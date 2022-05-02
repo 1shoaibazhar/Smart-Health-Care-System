@@ -77,6 +77,29 @@ app.get("/display", (req, res) => {
  res.render("search",{ title: "Search Patient/Employee" });
  });
 
+ app.get("/predict_heartattack", (req, res) => {
+  res.render("predict_heartattack",{ title: "Predict Heart Attack" });
+  });
+
+  app.get("/predict_diabetes", (req, res) => {
+    res.render("predict_diabetes",{ title: "Predict Diabetes" });
+    });
+
+  app.get("/predict_jaundice", (req, res) => {
+      res.render("predict_jaundice",{ title: "Predict Jaundice" });
+      });
+
+  app.get("/predict_malaria", (req, res) => {
+        res.render("predict_malaria",{ title: "Predict Malaria" });
+    });
+
+  app.get("/predict_appendicitis", (req, res) => {
+          res.render("predict_appendicitis",{ title: "Predict Appendicitis" });
+    });
+
+  app.get("/predict_tuberculosis", (req, res) => {
+            res.render("predict_tuberculosis",{ title: "Predict Tuberculosis" });
+      });
 
  //************form button  */
  app.post("/search", (req, res) => {
@@ -105,8 +128,29 @@ app.get("/display", (req, res) => {
    
  });
 
+app.post("/predict_heartattack", (req, res) => {
+  res.render("patient_dashboard");
+});
 
+app.post("/predict_diabetes", (req, res) => {
+  res.render("patient_dashboard");
+});
 
+app.post("/predict_appendicitis", (req, res) => {
+  res.render("patient_dashboard");
+});
+
+app.post("/predict_jaundice", (req, res) => {
+  res.render("patient_dashboard");
+});
+
+app.post("/predict_malaria", (req, res) => {
+  res.render("patient_dashboard");
+});
+
+app.post("/predict_tuberculosis", (req, res) => {
+  res.render("patient_dashboard");
+});
 
 app.post("/admin_signup", (req, res) => {
   var myData = new employee(req.body);
