@@ -68,6 +68,16 @@
 a.button:hover{
      background: rgb(212, 55, 37);
 }
+
+  
+.custom-btn{
+  box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233)!important;
+}
+.custom-btn:hover{
+  background-color: #3234a8;;
+  color: white;
+}
+
       </style>
 
 
@@ -134,21 +144,6 @@ a.button:hover{
                        </div>
                 </div>
                 <hr size="4px">
-                <!-- <div class="row">
-                    <div class="col-md-3 mb-4">  
-                    <h6>Maria Hassan</h6> 
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <h6>Lab Technician</h6>
-                       </div>
-                       <div class="col-md-3 offset-md-3 mb-4">
-        
-                        <button name="View" type="button" class="btn btn-primary btn-sm"><a href = "#" style=" color:white; text-decoration:none;">View</a></button>
-                        <button name="Delete" type="button" class="btn btn-primary btn-sm"><a href = "#" style=" color:white; text-decoration:none;" >Delete</a></button>      
-                       </div>
-                  </div>
-
-                   -->
                   <% if (users.length > 0) { %>  
                   
                       <% users.forEach(user => { %>
@@ -187,11 +182,11 @@ a.button:hover{
                   <div class="mt-4 pt-2">
                     
                     
-                    <button name="Back" type="button" class="btn btn-primary btn-lg"><a href = "/search" style=" color:white; text-decoration:none;" >Back to Search</a></button>
+                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn"><a href = "/search" style=" color:white; text-decoration:none;" >Back to Search</a></button>
                       &nbsp&nbsp&nbsp
                     
 
-                    <button name="Back" type="button" class="btn btn-primary btn-lg"><a href = "/admin_dashboard" style=" color:white; text-decoration:none;" >Back to Dashboard</a></button>
+                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn"><a href = "/admin_dashboard" style=" color:white; text-decoration:none;" >Back to Dashboard</a></button>
                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     
                   </div>
