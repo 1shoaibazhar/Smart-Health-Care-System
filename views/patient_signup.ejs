@@ -6,6 +6,7 @@
      background-repeat: no-repeat;
      height:940px;
      background-size: cover;
+     background-attachment: fixed;
 
   }
 .gradient-custom {
@@ -133,11 +134,22 @@ a:hover {
             <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
               <div class="card-body p-4 p-md-5">
                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient's Login Credentials</h3>
+                <!-- EJS Code that displays errors using bootsrap -->
+                <!-- When the page is loaded again with errors, we have alert array sent that contains errors -->
+                <% if(typeof alert != 'undefined') { %>
+                  <% alert.forEach(function(error) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <%= error.msg %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  <% }) %>
+                <% } %>
                 <form  method="post" action="/patient_signup">
-    
                   <div class="row">
                     <div class="col-md-6 mb-4">
-    
+                      
                       <div class="form-outline">
                         <input name="Name"type="text" id="Name" class="form-control form-control-lg" required />
                         <label class="form-label" for="Name">Name</label>
@@ -215,7 +227,7 @@ a:hover {
                     <div class="col-md-6 mb-4 pb-2">
     
                       <div class="form-outline">
-                        <input name="CNIC"type="text" id="CNIC" class="form-control form-control-lg required" />
+                        <input name="CNIC" type="text" id="CNIC" class="form-control form-control-lg required" />
                         <label class="form-label" for="CNIC">CNIC</label>
                       </div>
     
@@ -223,7 +235,7 @@ a:hover {
                     <div class="col-md-6 mb-4 pb-2">
     
                       <div class="form-outline">
-                        <input name="PhoneNumber"type="tel" id="phoneNumber" class="form-control form-control-lg" required/>
+                        <input name="PhoneNumber" type="tel" id="phoneNumber" class="form-control form-control-lg" required/>
                         <label class="form-label" for="phoneNumber">Phone Number</label>
                       </div>
     

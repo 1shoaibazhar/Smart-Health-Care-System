@@ -6,6 +6,7 @@
      background-repeat: no-repeat;
      height:950px;
      background-size: cover;
+     background-attachment: fixed;
 
   }
 .gradient-custom {
@@ -121,6 +122,18 @@ a:hover {
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Employee’s Login Credentials</h3>
+                  <!-- EJS Code that displays errors using bootsrap -->
+                  <!-- When the page is loaded again with errors, we have alert array sent that contains errors -->
+                  <% if(typeof alert != 'undefined') { %>
+                    <% alert.forEach(function(error) { %>
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= error.msg %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    <% }) %>
+                  <% } %>
                   <form  method="post" action="/admin_signup">
       
                     <div class="row">

@@ -1,229 +1,281 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="nofollow" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Manage Account Information</title>
-    <script src="https://kit.fontawesome.com/73bbf25160.js" crossorigin="anonymous"></script>
-    
-  
-</head>
-<style>
-  body{
-     background-image: url('/assets/img/departments-1.jpg');
-     padding:1rem;
-     background-repeat: no-repeat;
-     height:940px;
-     background-size: cover;
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+			rel="nofollow"
+			integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+			crossorigin="anonymous"
+		/>
+		<!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"> -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<title>Manage Account Information</title>
+		<script
+			src="https://kit.fontawesome.com/73bbf25160.js"
+			crossorigin="anonymous"
+		></script>
 
-  }
-.gradient-custom {
- 
-  background-color: #58c1f1;
-  background: -webkit-linear-gradient(to bottom right, rgb(71, 151, 197), rgb(81, 135, 235));
-  background: linear-gradient(to bottom right, rgb(86, 122, 219), rgb(63, 179, 214));
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<style>
+		body {
+			background-image: url("/assets/img/departments-1.jpg");
+			padding: 1rem;
+			background-repeat: no-repeat;
+			height: 940px;
+			background-size: cover;
+			background-attachment: fixed;
+		}
+		.gradient-custom {
+			background-color: #58c1f1;
+			background: -webkit-linear-gradient(
+				to bottom right,
+				rgb(71, 151, 197),
+				rgb(81, 135, 235)
+			);
+			background: linear-gradient(
+				to bottom right,
+				rgb(86, 122, 219),
+				rgb(63, 179, 214)
+			);
+		}
 
-}
+		.card-registration .select-input.form-control[readonly]:not([disabled]) {
+			font-size: 1rem;
+			line-height: 2.15;
+			padding-left: 0.75em;
+			padding-right: 0.75em;
+		}
+		.card-registration .select-arrow {
+			top: 13px;
+		}
+		a.button:hover {
+			background: rgb(212, 55, 37);
+		}
+	</style>
 
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-  font-size: 1rem;
-  line-height: 2.15;
-  padding-left: .75em;
-  padding-right: .75em;
-  
-}
-.card-registration .select-arrow {
-  top: 13px;
-  
-}
-a.button:hover{
-     background: rgb(212, 55, 37);
-}
+	<body>
+		<div class="container py-5 h-100">
+			<div class="row justify-content-center align-items-center h-100">
+				<div class="col-12 col-lg-9 col-xl-7">
+					<div
+						class="card shadow-2-strong card-registration"
+						style="border-radius: 15px"
+					>
+						<div class="card-body p-4 p-md-5">
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient Details</h3>
+							<!-- EJS Code that displays errors using bootsrap -->
+							<!-- When the page is loaded again with errors, we have alert array sent that contains errors -->
+							<% if(typeof alert != 'undefined') { %> <%
+							alert.forEach(function(error) { %>
+							<div
+								class="alert alert-danger alert-dismissible fade show"
+								role="alert"
+							>
+								<%= error.msg %>
+								<button
+									type="button"
+									class="close"
+									data-dismiss="alert"
+									aria-label="Close"
+								>
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<% }) %> <% } %>
+							<form method="post" action="/update_info_patient">
+								<div class="row">
+									<div class="col-md-6 mb-4">
+										<div class="form-outline datepicker w-100">
+											<input
+												name="UserName"
+												type="text"
+												class="form-control form-control-lg"
+												id="UserName"
+												placeholder="<%= User.UserName %>"
+												value="<%= User.UserName %>"
+												readonly
+											/>
+											<label for="UserName" class="form-label"
+												>Username (Unique and immutable)</label
+											>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<div class="form-outline">
+											<input
+												name="Email"
+												type="email"
+												id="Email"
+												placeholder="<%= User.Email %>"
+												value="<%= User.Email %>"
+												class="form-control form-control-lg"
+											/>
+											<label class="form-label" for="Email">Email</label>
+										</div>
+									</div>
+								</div>
 
-</style>
+								<div class="row">
+									<div class="col-md-6 mb-4 d-flex align-items-center">
+										<div class="form-outline">
+											<input
+												name="Name"
+												type="text"
+												placeholder="<%= User.Name %>"
+												value="<%= User.Name %>"
+												id="Name"
+												class="form-control form-control-lg"
+											/>
+											<label class="form-label" for="Name">Name</label>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<h6 class="mb-2 pb-1">Gender:</h6>
 
-<body>
-       
-    <div class="container py-5 h-100">
-        <div class="row justify-content-center align-items-center h-100">
-          <div class="col-12 col-lg-9 col-xl-7">
-            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-              <div class="card-body p-4 p-md-5">
-                  
-                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient Details</h3>
-                <form  method="post" action="/update_info_patient">
-    
-                  <div class="row">
-                    <div class="col-md-6 mb-4">
-    
-                      
-                      <div class="form-outline datepicker w-100">
-                        <input name="UserName" type="text" class="form-control form-control-lg" id="UserName" placeholder="<%= User.UserName %>" value="<%= User.UserName %>" readonly/>
-                        <label for="UserName" class="form-label">Username (Unique and immutable)</label>
-                      </div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="Gender"
+											id="femaleGender" value="Female" <% if(User.Gender ==
+											"Female") {%> checked <% } %> />
+											<label class="form-check-label" for="femaleGender"
+												>Female</label
+											>
+										</div>
 
-                      
-    
-                    </div>
-                    <div class="col-md-6 mb-4">
-    
-                      <div class="form-outline">
-                        <input name="Email" type="email" id="Email" placeholder="<%= User.Email %>" class="form-control form-control-lg"  />
-                        <label class="form-label" for="Email">Email</label>
-                      </div>
-    
-                    </div>
-                  </div>
-    
-                  <div class="row">
-                    <div class="col-md-6 mb-4 d-flex align-items-center">
-                      <div class="form-outline">
-                        <input name="Name" type="text" placeholder="<%= User.Name %>" id="Name" class="form-control form-control-lg"  />
-                        <label class="form-label"  for="Name">Name</label>
-                      </div>
-    
-                    </div>
-                    <div class="col-md-6 mb-4">
-    
-                      <h6 class="mb-2 pb-1">Gender: </h6>
-    
-                      <div class="form-check form-check-inline">
-                        <input
-                          
-                          class="form-check-input"
-                          type="radio"
-                          name="Gender"
-                          id="femaleGender"
-                          value="Female"
-                          <% if(User.Gender == "Female") {%>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="Gender"
+											id="maleGender" value="Male" <% if(User.Gender == "Male")
+											{%> checked <% } %> />
+											<label class="form-check-label" for="maleGender"
+												>Male</label
+											>
+										</div>
 
-                          checked
-                          <% } %>
-                        />
-                        <label class="form-check-label" for="femaleGender">Female</label>
-                      </div>
-    
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="Gender"
-                          id="maleGender"
-                          value="Male"
-                          <% if(User.Gender == "Male") {%>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="Gender"
+											id="otherGender" value="Other" <% if(User.Gender ==
+											"Other") {%> checked <% } %> />
+											<label class="form-check-label" for="otherGender"
+												>Other</label
+											>
+										</div>
+									</div>
+								</div>
 
-                            checked
-                            <% } %>
-                        />
-                        <label class="form-check-label" for="maleGender">Male</label>
-                      </div>
-    
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="Gender"
-                          id="otherGender"
-                          value="Other"
-                          <% if(User.Gender == "Other") {%>
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline">
+											<input
+												name="CNIC"
+												type="text"
+												id="CNIC"
+												placeholder="<%= User.CNIC %>"
+												value="<%= User.CNIC %>"
+												class="form-control form-control-lg"
+											/>
+											<label class="form-label" for="CNIC">CNIC</label>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline">
+											<input
+												name="PhoneNumber"
+												type="tel"
+												id="phoneNumber"
+												placeholder="<%= User.PhoneNumber %>"
+												value="<%= User.PhoneNumber %>"
+												class="form-control form-control-lg"
+											/>
+											<label class="form-label" for="phoneNumber"
+												>Phone Number</label
+											>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline flex-fill mb-0">
+											<input
+												name="Password"
+												type="password"
+												name="pswrd_1"
+												placeholder="<%= User.Password %>"
+												value="<%= User.Password %>"
+												id="pswrd_1"
+												class="form-control"
+											/>
+											<label class="form-label" for="Password">Password</label>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4 d-flex align-items-center">
+										<div class="form-outline datepicker w-100">
+											<input
+												name="Address"
+												type="text"
+												class="form-control form-control-lg"
+												id="Address"
+												placeholder="<%= User.Address %>"
+												value="<%= User.Address %>"
+											/>
+											<label for="Address" class="form-label">Address</label>
+										</div>
+									</div>
+								</div>
 
-                            checked
-                            <% } %>
-                        />
-                        <label class="form-check-label" for="otherGender">Other</label>
-                      </div>
-    
-                    </div>
-                  </div>
-    
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2">
-    
-                      <div class="form-outline">
-                        <input name="CNIC"type="text" id="CNIC" placeholder="<%= User.CNIC %>" class="form-control form-control-lg " />
-                        <label class="form-label" for="CNIC">CNIC</label>
-                      </div>
-    
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-    
-                      <div class="form-outline">
-                        <input name="PhoneNumber"type="tel" id="phoneNumber" placeholder="<%= User.PhoneNumber %>" class="form-control form-control-lg" />
-                        <label class="form-label" for="phoneNumber">Phone Number</label>
-                      </div>
-    
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2">
-  
-                     
-                      <div class="form-outline flex-fill mb-0">
-                          <input name="Password" type="password" name = "pswrd_1" placeholder="<%= User.Password %>" id="pswrd_1" class="form-control"  />
-                          <label class="form-label" for="Password">Password</label>
-                       
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-4 d-flex align-items-center">
-      
-                      <div class="form-outline datepicker w-100">
-                        <input
-                          name="Address"
-                          type="text"
-                          class="form-control form-control-lg"
-                          id="Address"
-                          placeholder="<%= User.Address %>"
-                        />
-                        <label for="Address" class="form-label">Address</label>
-                      </div>
-    
-                  </div>        
-    
-                </div>
-    
-                  <div class="mt-4 pt-2">
-                    <input name="Update"class="btn btn-primary btn-lg" type="submit" value="Update" />
-                    &nbsp&nbsp
-                  
-                      <button name="Back" type="button" class="btn btn-primary btn-lg deletebtn" style=" color:white; text-decoration:none;" onclick="history.back()" >Back to Home</button>
-                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                     
-                      <a href="/delete_patient/<%= User._id %>" data-doc="<%= User._id %>" class="deletebtn btn btn-primary btn-lg" style = "background-color:red; border-color: red;"value="Delete Account">Delete Account</a>
-                  </div>
-    
-              </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+								<div class="mt-4 pt-2">
+									<input
+										name="Update"
+										class="btn btn-primary btn-lg"
+										type="submit"
+										value="Update"
+									/>
+									&nbsp&nbsp
 
+									<button
+										name="Back"
+										type="button"
+										class="btn btn-primary btn-lg deletebtn"
+										style="color: white; text-decoration: none"
+										onclick="history.back()"
+									>
+										Back to Home
+									</button>
+									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-      
-    <script>
-
-        /* const deleted_can = document.querySelector('.deletebtn');
-        console.log(deleted_can);
-
-        deleted_can.addEventListener('click',(e)=>{
-
-        let c = confirm("Are you sure you want to delete your Account?", "Delete Account");
-        if (c){
-            const endpoint = `/delete_patient/${deleted_can.dataset.doc}`;
-            fetch(endpoint, {
-              method : 'DELETE'
-            })
-            .then((response) => response.json())
-            .then((data)=>console.log(data))
-            .catch(err=> console.log(err))
-        }
-      }) */
-      
-      
-     </script>
-    
-</body>
+									<a
+										href="/delete_patient/<%= User._id %>"
+										data-doc="<%= User._id %>"
+										class="deletebtn btn btn-primary btn-lg"
+										style="background-color: red; border-color: red"
+										value="Delete Account"
+										>Delete Account</a
+									>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
