@@ -80,6 +80,8 @@ app.get("/display", (req, res) => {
  
 
 
+
+
 //***********************page redirection link anchor tag/ normal buttons outside form  */
  app.get("/search", (req, res) => {
  res.render("search",{ title: "Search Patient/Employee" });
@@ -211,6 +213,41 @@ app.post("/patient_signup", (req, res) => {
     });
 });
 
+
+// When admin sends a delete patient request from the display page
+app.get("/delete_patient_admin/:id", (req,res)=>{
+  const useriD = req.params.id;
+  console.log(useriD);
+  patient
+    .findByIdAndDelete(useriD)
+    .then((result) => {
+      res.redirect("/search");
+    })
+
+    .catch((err) => console.log(err));
+
+})
+
+
+// When admin sends a delete employee request from the display page
+app.get("/delete_employee_admin/:id", (req,res)=>{
+  const useriD = req.params.id;
+  console.log(useriD);
+  employee
+    .findByIdAndDelete(useriD)
+    .then((result) => {
+      res.redirect("/search");
+    })
+
+    .catch((err) => console.log(err));
+
+})
+
+
+
+
+
+
 app.get("/update_patient/:id", (req, res) => {
   const useriD = req.params.id;
   console.log(useriD);
@@ -226,7 +263,6 @@ app.get("/delete_patient/:id", (req, res) => {
   patient
     .findByIdAndDelete(useriD)
     .then((result) => {
-      // res.json({ redirect: '/login'});
       res.redirect("/");
     })
 

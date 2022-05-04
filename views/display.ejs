@@ -162,9 +162,16 @@ a.button:hover{
                           </div>
                              <div class="col-md-3 offset-md-3 mb-4">
               
-                              <button style="background-color: green;" name="View" type="button" class="btn btn-primary btn-sm"><a href = "#" style=" color:white; text-decoration:none;">View</a></button>
-                              <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href = "#" style=" color:white; text-decoration:none;" >Delete</a></button>      
-                             </div>
+                              <button style="background-color: green;" name="View" type="button" class="btn btn-primary btn-sm"><a href = "/display/<%= user._id %>" style=" color:white; text-decoration:none;">View</a></button>
+                              
+                              <% if (Designation == "Patient") { %>
+                              <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href="/delete_patient_admin/<%= user._id %>" data-doc="<%= user._id %>" style=" color:white; text-decoration:none;" >Delete</a></button>      
+                             
+                              <% } else { %>
+                                <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href="/delete_employee_admin/<%= user._id %>" data-doc="<%= user._id %>" style=" color:white; text-decoration:none;" >Delete</a></button>
+
+                              <% } %>
+                            </div>
                         </div>
 
                       <% }) %>
