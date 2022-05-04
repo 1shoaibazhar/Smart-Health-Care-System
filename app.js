@@ -21,7 +21,7 @@ mongoose.connect("mongodb://localhost:27017/SmartHealthCareSystem");
 // Setting view engine as ejs
 app.set("view engine", "ejs");
 
-// app.use(morgan('dev'));
+// app.use(morgan("dev"));
 
 // EXPRESS SPECIFIC STUFF
 app.use(express.static(path.join(__dirname, "public")));
@@ -40,14 +40,13 @@ app.get("/", (req, res) => {
     Password: "1234",
   };
   var myData = new admin(admin_data);
-  myData.save(function(err,admin){
+  myData.save(function (err, admin) {
     if (err) return console.error(err);
-  })
+  });
 });
 
-
 app.get("/login", (req, res) => {
-  res.render("login", { title: "Login" , unavailable : ""});
+  res.render("login", { title: "Login", unavailable: "" });
 });
 
 app.get("/patient_signup", (req, res) => {
@@ -66,77 +65,76 @@ app.get("/view_employee", (req, res) => {
   res.render("view_employee", { title: "View Employee" });
 });
 
-
-
 //***********************to load page  */
 app.get("/admin_dashboard", (req, res) => {
-   res.render("admin_dashboard",{ title: "Admin Dashboard" });
- });
-
- //***********************to load page  */
-app.get("/display", (req, res) => {
-  res.render("display",{ title: "Display Patient/Employee" });
+  res.render("admin_dashboard", { title: "Admin Dashboard" });
 });
- 
 
-
-
+//***********************to load page  */
+app.get("/display", (req, res) => {
+  res.render("display", { title: "Display Patient/Employee" });
+});
 
 //***********************page redirection link anchor tag/ normal buttons outside form  */
- app.get("/search", (req, res) => {
- res.render("search",{ title: "Search Patient/Employee" });
- });
+app.get("/search", (req, res) => {
+  res.render("search", { title: "Search Patient/Employee" });
+});
 
- app.get("/predict_heartattack", (req, res) => {
-  res.render("predict_heartattack",{ title: "Predict Heart Attack" });
-  });
+app.get("/predict_heartattack", (req, res) => {
+  res.render("predict_heartattack", { title: "Predict Heart Attack" });
+});
 
-  app.get("/predict_diabetes", (req, res) => {
-    res.render("predict_diabetes",{ title: "Predict Diabetes" });
+app.get("/predict_diabetes", (req, res) => {
+  res.render("predict_diabetes", { title: "Predict Diabetes" });
+});
+
+app.get("/predict_jaundice", (req, res) => {
+  res.render("predict_jaundice", { title: "Predict Jaundice" });
+});
+
+app.get("/predict_malaria", (req, res) => {
+  res.render("predict_malaria", { title: "Predict Malaria" });
+});
+
+app.get("/predict_appendicitis", (req, res) => {
+  res.render("predict_appendicitis", { title: "Predict Appendicitis" });
+});
+
+app.get("/predict_tuberculosis", (req, res) => {
+  res.render("predict_tuberculosis", { title: "Predict Tuberculosis" });
+});
+
+//************form button  */
+app.post("/search", (req, res) => {
+  console.log(req.body);
+
+  const name = req.body.Name;
+
+  if (req.body.Designation == "Patient") {
+    patient.find({ Name: name }, function (err, doc) {
+      if (!err) {
+        res.render("display", {
+          title: "Search Results",
+          users: doc,
+          Designation: "Patient",
+        });
+      }
     });
-
-  app.get("/predict_jaundice", (req, res) => {
-      res.render("predict_jaundice",{ title: "Predict Jaundice" });
-      });
-
-  app.get("/predict_malaria", (req, res) => {
-        res.render("predict_malaria",{ title: "Predict Malaria" });
-    });
-
-  app.get("/predict_appendicitis", (req, res) => {
-          res.render("predict_appendicitis",{ title: "Predict Appendicitis" });
-    });
-
-  app.get("/predict_tuberculosis", (req, res) => {
-            res.render("predict_tuberculosis",{ title: "Predict Tuberculosis" });
-      });
-
- //************form button  */
- app.post("/search", (req, res) => {
-    console.log(req.body);
-
-    const name = req.body.Name;
-    
-    if (req.body.Designation == 'Patient')
-    {
-      patient.find({Name : name}, function (err, doc){
-        if (!err){
-          res.render("display",{ title: "Search Results" , users : doc, Designation: "Patient"});
+  } else {
+    employee.find(
+      { Name: name, Profession: req.body.Designation },
+      function (err, doc) {
+        if (!err) {
+          res.render("display", {
+            title: "Search Results",
+            users: doc,
+            Designation: "Employee",
+          });
         }
-      });
-    }
-    else
-    {
-      employee.find({Name : name, Profession: req.body.Designation}, function (err, doc){
-        if (!err){
-          res.render("display",{ title: "Search Results" , users : doc, Designation: "Employee"});
-        }
-      });
-    }
-
-
-   
- });
+      }
+    );
+  }
+});
 
 app.post("/predict_heartattack", (req, res) => {
   res.render("patient_dashboard");
@@ -187,15 +185,14 @@ app.post("/admin_signup", (req, res) => {
   myData
     .save()
     .then(() => {
-      setTimeout(()=>{
-        res.redirect('/');
+      setTimeout(() => {
+        res.redirect("/");
       }, 3000);
     })
     .catch(() => {
       res.status(400).send("Item was not saved to the database");
     });
 });
-
 
 app.post("/patient_signup", (req, res) => {
   let phoneNumber = req.body.PhoneNumber;
@@ -213,35 +210,55 @@ app.post("/patient_signup", (req, res) => {
     });
 });
 
-
 // When admin sends a delete patient request from the display page
-app.get("/delete_patient_admin/:id", (req,res)=>{
+app.get("/delete_patient_admin/:id", (req, res) => {
   const useriD = req.params.id;
-  console.log(useriD);
-  patient
-    .findByIdAndDelete(useriD)
-    .then((result) => {
-      res.redirect("/search");
-    })
 
-    .catch((err) => console.log(err));
+  // Searching all users by that name in order to display them on the search page after the current user is deleted
+  patient.findById(useriD).then((result) => {
+    const name = result.Name;
+    patient
+      .findByIdAndDelete(useriD)
+      .then((result) => {
+        patient.find({ Name: name }, function (err, doc) {
+          if (!err) {
+            res.render("display", {
+              title: "Search Results",
+              users: doc,
+              Designation: "Patient",
+            });
+          }
+        });
+      })
 
-})
-
+      .catch((err) => console.log(err));
+  });
+});
 
 // When admin sends a delete employee request from the display page
-app.get("/delete_employee_admin/:id", (req,res)=>{
+app.get("/delete_employee_admin/:id", (req, res) => {
   const useriD = req.params.id;
-  console.log(useriD);
-  employee
-    .findByIdAndDelete(useriD)
-    .then((result) => {
-      res.redirect("/search");
-    })
 
-    .catch((err) => console.log(err));
+  // Searching all users by that name in order to display them on the search page after the current user is deleted
+  employee.findById(useriD).then((result) => {
+    const name = result.Name;
+    employee
+      .findByIdAndDelete(useriD)
+      .then((result) => {
+        employee.find({ Name: name }, function (err, doc) {
+          if (!err) {
+            res.render("display", {
+              title: "Search Results",
+              users: doc,
+              Designation: "Employee",
+            });
+          }
+        });
+      })
 
-})
+      .catch((err) => console.log(err));
+  });
+});
 
 
 
