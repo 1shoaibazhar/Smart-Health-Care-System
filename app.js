@@ -777,7 +777,7 @@ app.post("/login", async (req, res) => {
 
   let title_display = "DashBoard | " + UserName;
 
-  employee
+  await employee
     .findOne({ UserName: UserName, Password: Password }, function (err, doc) {
       if (doc) {
         res.render("employee_dashboard", {
