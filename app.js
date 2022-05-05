@@ -4,6 +4,7 @@ const app = express();
 const morgan = require("morgan");
 const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
+require("dotenv").config();
 //For field validations
 const { check, validationResult } = require("express-validator");
 
@@ -12,13 +13,22 @@ const employee = require("./models/employees");
 const admin = require("./models/admins");
 const patient = require("./models/patients");
 
-const port = 3000;
-// START THE SERVER
-app.listen(port, () => {
-  console.log(`The application started successfully on port ${port}`);
-});
-
-mongoose.connect("mongodb://localhost:27017/SmartHealthCareSystem");
+// Linking mongodb Atlas database and then starting the server
+const mongodbURL = String(process.env.MONGO_URL);
+mongoose
+  .connect(mongodbURL)
+  .then(() => {
+    console.log("Database is connected");
+    const port = 3000;
+    // START THE SERVER
+    app.listen(port, () => {
+      console.log(`The application started successfully on port ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.log("Database is not connected");
+    console.log(err);
+  });
 
 // Setting view engine as ejs
 app.set("view engine", "ejs");
