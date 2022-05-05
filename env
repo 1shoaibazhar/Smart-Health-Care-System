@@ -1,0 +1,1 @@
+MONGO_URL = mongodb+srv://smartHealthCareUser:5nOYB4OAQlWGcCwm@cluster0.qbfgk.mongodb.net/SmartHealthCareSystem?retryWrites=true&w=majority
