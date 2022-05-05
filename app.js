@@ -308,8 +308,8 @@ app.post(
 		check("CNIC")
 			.exists()
 			.withMessage("CNIC is required")
-			.isLength({ min: 8, max: 8 })
-			.withMessage("CNIC must be of 8 digits")
+			.isLength({ min: 11, max: 11 })
+			.withMessage("CNIC must be of 11 digits")
 			.isNumeric()
 			.withMessage("CNIC can only contain numbers"),
 		check("PhoneNumber")
@@ -460,8 +460,8 @@ app.post(
 		check("CNIC")
 			.exists()
 			.withMessage("CNIC is required")
-			.isLength({ min: 8, max: 8 })
-			.withMessage("CNIC must be of 8 digits")
+			.isLength({ min: 11, max: 11 })
+			.withMessage("CNIC must be of 11 digits")
 			.isNumeric()
 			.withMessage("CNIC can only contain numbers"),
 		check("PhoneNumber")
@@ -636,11 +636,11 @@ app.post(
 			.withMessage("Email is not valid"),
 		check("EmployeeNumber")
 			.exists()
-			.withMessage("CNIC is required")
-			.isLength({ min: 8, max: 8 })
-			.withMessage("CNIC must be of 8 digits")
+			.withMessage("Employee Number is required")
+			.isLength({ min: 6, max: 6 })
+			.withMessage("Employee Number must be of 6 digits")
 			.isNumeric()
-			.withMessage("CNIC can only contain numbers"),
+			.withMessage("Employee Number can only contain numbers"),
 		check("PhoneNumber")
 			.exists()
 			.withMessage("Phone Number is required")

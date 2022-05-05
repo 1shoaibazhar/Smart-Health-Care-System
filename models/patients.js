@@ -11,7 +11,7 @@ const patientSchema = new mongoose.Schema({
 	},
 	Gender: String,
 	CNIC: Number,
-	PhoneNumber: Number,
+	PhoneNumber: String,
 	Password: String,
 	Address: String,
 });
