@@ -71,6 +71,41 @@
 		.card-registration .select-arrow {
 			top: 13px;
 		}
+		.custom-btn{
+    box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233)!important;
+  }
+  .cu
+		.custom-btn:hover{
+    background-color: #3234a8;;
+    color: white;
+  }
+
+  .custom-btn1{
+    box-shadow: 0 2px 2px 0 rgb(239, 33, 5), 0 2px 10px 0 rgb(213, 92, 35)!important;
+  }
+  .custom-btn1:hover{
+    background-color: #c52805;;
+    color: white;
+  }
+
+  .popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
 	</style>
 
 	<body>
@@ -83,7 +118,27 @@
 						style="border-radius: 15px"
 					>
 						<div class="card-body p-4 p-md-5">
-							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Employee Details</h3>
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Employee Details
+								<div class="popup" onclick="myFunction('toggle')"><i  class="fa-solid fa-circle-info popup fa-sm"></i></div>
+							</h3>
+							<div id="toggle" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
+								<ul>
+								  <li>All fields are required</li>
+								  <li>Name must be of 3 characters long and be alphabetical</li>
+								  <li> UserName must be of atleast 4 characters and at max 10 characters</li>
+								  <li>UserName can only contain alphabets and numbers</li>
+								  <li>Phone Number must be of atleast 7 digits and at max 15 digits</li>
+								  <li>Phone Number can only contain numbers (no + sign required)</li>
+								  <li>Password must be of atleast 6 characters and at max 10 characters</li>
+								  <li>Password must contain at least an upper case alphabet</li>
+								  <li>Password must contain at least a lower case alphabet</li>
+								  <li>Password must contain a non letter character</li>
+								  <li> Address must be complete</li>
+								</ul>
+								  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								  </button>
+							   </div>
 							<!-- EJS Code that displays errors using bootsrap -->
 							<!-- When the page is loaded again with errors, we have alert array sent that contains errors -->
 							<% if(typeof alert != 'undefined') { %> <%
@@ -249,7 +304,7 @@
 								<div class="mt-4 pt-2">
 									<input
 										name="Update"
-										class="btn btn-primary btn-lg"
+										class="btn btn-primary btn-lg custom-btn"
 										type="submit"
 										value="Update"
 									/>
@@ -258,7 +313,7 @@
 									<button
 										name="Back"
 										type="button"
-										class="btn btn-primary btn-lg"
+										class="btn btn-primary btn-lg custom-btn"
 									>
 										<a
 											href="/patient_dashboard"
@@ -272,7 +327,7 @@
 									<a
 										href="/delete_employee/<%= User._id %>"
 										data-doc="<%= User._id %>"
-										class="deletebtn btn btn-primary btn-lg"
+										class="deletebtn btn btn-primary btn-lg custom-btn1"
 										style="background-color: red; border-color: red"
 										value="Delete Account"
 										>Delete Account</a
@@ -282,7 +337,13 @@
 						</div>
 					</div>
 				</div>
+				<br><br><br>
 			</div>
 		</div>
+		<script>
+			function myFunction(toggle){
+			document.getElementById(toggle).style.display = 'block';
+		}
+		</script>
 	</body>
 </html>

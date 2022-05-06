@@ -69,6 +69,10 @@ app.get("/view_patient", (req, res) => {
 	res.render("view_patient", { title: "View Patient" });
 });
 
+app.get("/view_employee", (req, res) => {
+	res.render("view_employee", { title: "View Employee" });
+});
+
 app.get("/admin_signup", (req, res) => {
 	res.render("admin_signup", { title: "Employees SignUp" });
 });
@@ -111,6 +115,8 @@ app.get("/predict_appendicitis", (req, res) => {
 app.get("/predict_tuberculosis", (req, res) => {
 	res.render("predict_tuberculosis", { title: "Predict Tuberculosis" });
 });
+
+
 
 //************form button  */
 app.post(
@@ -191,6 +197,26 @@ app.post("/predict_tuberculosis", (req, res) => {
 	res.render("patient_dashboard");
 });
 
+
+app.post("/display", (req, res) => {
+	res.render("view_employee");
+});
+
+app.post("/view_patient", (req, res) => {
+	res.render("admin_dashboard");
+});
+
+app.post("/view_patient", (req, res) => {
+	res.render("display");
+});
+
+app.post("/view_employee", (req, res) => {
+	res.render("admin_dashboard");
+});
+
+app.post("/view_employee", (req, res) => {
+	res.render("display");
+});
 app.post(
 	"/admin_signup",
 	urlencodedParser,

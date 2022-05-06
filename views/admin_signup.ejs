@@ -4,7 +4,7 @@
   body{
      background-image: url('4.jpg');
      background-repeat: no-repeat;
-     height:950px;
+     height:960px;
      background-size: cover;
      background-attachment: fixed;
 
@@ -90,6 +90,24 @@ a:hover {
     background-color: #3234a8;;
     color: white;
   }
+  .popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
 
 
 </style>
@@ -121,7 +139,29 @@ a:hover {
             <div class="col-12 col-lg-9 col-xl-7">
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
-                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Employee’s Login Credentials</h3>
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Employee’s Login Credentials
+                    <div class="popup" onclick="myFunction('toggle')"><i  class="fa-solid fa-circle-info popup fa-sm"></i></div>
+                  </h3>
+                  <div id="toggle" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
+                    <ul>
+                      <li>All fields are required</li>
+                      <li>Name must be of 3 characters long and be alphabetical</li>
+                      <li> UserName must be of atleast 4 characters and at max 10 characters</li>
+                      <li>UserName can only contain alphabets and numbers</li>
+                      <li>Phone Number must be of atleast 7 digits and at max 15 digits</li>
+                      <li>Phone Number can only contain numbers (no + sign required)</li>
+                      <li>Employee Number must be of 6 digits</li>
+                      <li>Employee Number can only contain numbers</li>
+                      <li>Password must be of atleast 6 characters and at max 10 characters</li>
+                      <li>Password must contain at least an upper case alphabet</li>
+                      <li>Password must contain at least a lower case alphabet</li>
+                      <li>Password must contain a non letter character</li>
+                      <li>Address must be complete</li>
+                    </ul>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                   </div>
                   <!-- EJS Code that displays errors using bootsrap -->
                   <!-- When the page is loaded again with errors, we have alert array sent that contains errors -->
                   <% if(typeof alert != 'undefined') { %>
@@ -286,7 +326,9 @@ a:hover {
                   </form>
                 </div>
               </div>
+              
             </div>
+            <br><br><br>
           </div>
         </div>
       </section>
@@ -310,6 +352,11 @@ a:hover {
       document.documentElement.scrollTop = 0;
     } 
    </script>
+   <script>
+    function myFunction(toggle){
+    document.getElementById(toggle).style.display = 'block';
+}
+</script>
     
 </body>
 </html>

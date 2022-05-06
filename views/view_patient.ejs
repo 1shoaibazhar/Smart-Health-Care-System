@@ -145,130 +145,47 @@ a.button:hover{
                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient Details</h3>
                 <form  method="post" action="/update_info_patient">
     
-                  <div class="row">
-                    <div class="col-md-6 mb-4">
+                 
+                   
+                    
+                  
+                  <div  class="alert alert-danger alert-dismissible fade show" >
+
+                    <div class="row"> 
+                    <h5>Name :</h5>
+                    </div>
+                  
+                    <div class="row">
+                      <h5>Gender : </h5>  
+                     </div>
+                     
+                     
+                     <div class="row">
+                        <h5>CNIC : </h5>    
     
-                      
-                      <div class="form-outline datepicker w-100">
-                        <input name="UserName" type="text" class="form-control form-control-lg" id="UserName" placeholder="" value="" />
-                        <label for="UserName" class="form-label">Username</label>
                       </div>
 
-                      
+                      <div class="row">
+                        <h5>Email : </h5>
+                     </div>
+                      <div class="row">
     
-                    </div>
-                    <div class="col-md-6 mb-4">
-    
-                      <div class="form-outline">
-                        <input name="Email" type="email" id="Email" placeholder="" class="form-control form-control-lg"  />
-                        <label class="form-label" for="Email">Email</label>
+                       
+                      <h5>Phone Number : </h5> 
                       </div>
-    
-                    </div>
-                  </div>
-    
-                  <div class="row">
-                    <div class="col-md-6 mb-4 d-flex align-items-center">
-                      <div class="form-outline">
-                        <input name="Name" type="text" placeholder="" id="Name" class="form-control form-control-lg"  />
-                        <label class="form-label"  for="Name">Name</label>
-                      </div>
-    
-                    </div>
-                    <div class="col-md-6 mb-4">
-    
-                      <h6 class="mb-2 pb-1">Gender: </h6>
-    
-                      <div class="form-check form-check-inline">
-                        <input
-                          
-                          class="form-check-input"
-                          type="radio"
-                          name="Gender"
-                          id="femaleGender"
-                          value="Female"
-                          
-                        />
-                        <label class="form-check-label" for="femaleGender">Female</label>
-                      </div>
-    
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="Gender"
-                          id="maleGender"
-                          value="Male"
-                          
-                        />
-                        <label class="form-check-label" for="maleGender">Male</label>
-                      </div>
-    
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="Gender"
-                          id="otherGender"
-                          value="Other"
-                          
-                        />
-                        <label class="form-check-label" for="otherGender">Other</label>
-                      </div>
-    
-                    </div>
-                  </div>
-    
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2">
-    
-                      <div class="form-outline">
-                        <input name="CNIC"type="text" id="CNIC" placeholder="" class="form-control form-control-lg " />
-                        <label class="form-label" for="CNIC">CNIC</label>
-                      </div>
-    
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-    
-                      <div class="form-outline">
-                        <input name="PhoneNumber"type="tel" id="phoneNumber" placeholder="" class="form-control form-control-lg" />
-                        <label class="form-label" for="phoneNumber">Phone Number</label>
-                      </div>
-    
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2">
-  
-                     
-                      <div class="form-outline flex-fill mb-0">
-                          <input name="Password" type="password" name = "pswrd_1" placeholder="" id="pswrd_1" class="form-control"  />
-                          <label class="form-label" for="Password">Password</label>
+                  
+                      <div class="row">
+      
+                       <h5>Address : </h5>
                        
                       </div>
-                  </div>
-                  <div class="col-md-6 mb-4 d-flex align-items-center">
-      
-                      <div class="form-outline datepicker w-100">
-                        <input
-                          name="Address"
-                          type="text"
-                          class="form-control form-control-lg"
-                          id="Address"
-                          placeholder=""
-                        />
-                        <label for="Address" class="form-label">Address</label>
-                      </div>
-    
-                  </div>        
-    
+                    
                 </div>
-    
                   <div class="mt-4 pt-2">
-                    <button name="Predict" type="button" class="btn btn-primary btn-lg custom-btn" onclick="showDiv('toggle')"><a href = "/display" style=" color:white; text-decoration:none;">Back to Search Results</a></button>
+                    <button name="back1" type="button" class="btn btn-primary btn-lg custom-btn" onclick="showDiv('toggle')"><a href = "/display" style=" color:white; text-decoration:none;">Back to Search Results</a></button>
                     &nbsp&nbsp
                   
-                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.back()">Back to Dashboard</button>
+                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" > <a href="/admin_dashboard" style=" color:white; text-decoration:none;">Back to Dashboard </a></button>
                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                      
                   </div>
