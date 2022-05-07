@@ -65,14 +65,6 @@ app.get("/patient_signup", (req, res) => {
 	res.render("patient_signup", { title: "Patient SignUp" });
 });
 
-app.get("/view_patient", (req, res) => {
-	res.render("view_patient", { title: "View Patient" });
-});
-
-app.get("/view_employee", (req, res) => {
-	res.render("view_employee", { title: "View Employee" });
-});
-
 app.get("/admin_signup", (req, res) => {
 	res.render("admin_signup", { title: "Employees SignUp" });
 });
@@ -80,11 +72,6 @@ app.get("/admin_signup", (req, res) => {
 //***********************to load page  */
 app.get("/admin_dashboard", (req, res) => {
 	res.render("admin_dashboard", { title: "Admin Dashboard" });
-});
-
-//***********************to load page  */
-app.get("/display", (req, res) => {
-	res.render("display", { title: "Display Patient/Employee" });
 });
 
 //***********************page redirection link anchor tag/ normal buttons outside form  */
@@ -115,8 +102,6 @@ app.get("/predict_appendicitis", (req, res) => {
 app.get("/predict_tuberculosis", (req, res) => {
 	res.render("predict_tuberculosis", { title: "Predict Tuberculosis" });
 });
-
-
 
 //************form button  */
 app.post(
@@ -173,10 +158,6 @@ app.post("/predict_heartattack", (req, res) => {
 	res.render("patient_dashboard");
 });
 
-app.post("/search", (req, res) => {
-	res.render("admin_dashboard");
-});
-
 app.post("/predict_diabetes", (req, res) => {
 	res.render("patient_dashboard");
 });
@@ -197,26 +178,16 @@ app.post("/predict_tuberculosis", (req, res) => {
 	res.render("patient_dashboard");
 });
 
-
-app.post("/display", (req, res) => {
-	res.render("view_employee");
+app.post("/view", (req, res) => {
+	let user = req.body.type;
+	let typeOfUser = user.Profession;
+	if (typeOfUser != undefined) {
+		res.render("view_employee", { title: "Employee Details", User: user });
+	} else {
+		res.render("view_patient", { title: "Patient Details", User: user });
+	}
 });
 
-app.post("/view_patient", (req, res) => {
-	res.render("admin_dashboard");
-});
-
-app.post("/view_patient", (req, res) => {
-	res.render("display");
-});
-
-app.post("/view_employee", (req, res) => {
-	res.render("admin_dashboard");
-});
-
-app.post("/view_employee", (req, res) => {
-	res.render("display");
-});
 app.post(
 	"/admin_signup",
 	urlencodedParser,
@@ -447,7 +418,10 @@ app.get("/update_patient/:id", (req, res) => {
 	const useriD = req.params.id;
 	console.log(useriD);
 	patient.findById(useriD).then((result) => {
-		res.render("update_info_patient", { User: result });
+		res.render("update_info_patient", {
+			title: "Manage Account Information",
+			User: result,
+		});
 	});
 });
 
@@ -531,7 +505,11 @@ app.post(
 			let patient_username = req.body.UserName;
 			patient.findOne({ UserName: patient_username }, function (err, doc) {
 				if (doc) {
-					res.render("update_info_patient", { User: doc, alert });
+					res.render("update_info_patient", {
+						title: "Manage Account Information",
+						User: doc,
+						alert,
+					});
 				}
 			});
 		} else {
@@ -625,7 +603,10 @@ app.get("/update_employee/:id", (req, res) => {
 	const useriD = req.params.id;
 	console.log(useriD);
 	employee.findById(useriD).then((result) => {
-		res.render("update_info_employee", { User: result });
+		res.render("update_info_employee", {
+			title: "Manage Account Information",
+			User: result,
+		});
 	});
 });
 
@@ -707,7 +688,11 @@ app.post(
 			let employee_username = req.body.UserName;
 			employee.findOne({ UserName: employee_username }, function (err, doc) {
 				if (doc) {
-					res.render("update_info_employee", { User: doc, alert });
+					res.render("update_info_employee", {
+						title: "Manage Account Information",
+						User: doc,
+						alert,
+					});
 				}
 			});
 		} else {

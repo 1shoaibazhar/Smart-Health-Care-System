@@ -143,46 +143,42 @@ a.button:hover{
               <div class="card-body p-4 p-md-5">
                   
                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient Details</h3>
-                <form  method="post" action="/update_info_patient">
-    
-                 
-                   
-                    
+                <form>
                   
-                  <div  class="alert alert-danger alert-dismissible fade show" >
+                  <div  class="alert alert-info alert-dismissible fade show" >
 
                     <div class="row"> 
-                    <h5>Name :</h5>
+                    <h5>Name : <%= User.Name %></h5>
                     </div>
                   
                     <div class="row">
-                      <h5>Gender : </h5>  
+                      <h5>Gender : <%= User.Gender %></h5>  
                      </div>
                      
                      
                      <div class="row">
-                        <h5>CNIC : </h5>    
+                        <h5>CNIC : <%= User.CNIC %></h5>    
     
                       </div>
 
                       <div class="row">
-                        <h5>Email : </h5>
+                        <h5>Email : <%= User.Email %></h5>
                      </div>
                       <div class="row">
     
                        
-                      <h5>Phone Number : </h5> 
+                      <h5>Phone Number : <%= User.PhoneNumber %></h5> 
                       </div>
                   
                       <div class="row">
       
-                       <h5>Address : </h5>
+                       <h5>Address : <%= User.Address %></h5>
                        
                       </div>
                     
                 </div>
                   <div class="mt-4 pt-2">
-                    <button name="back1" type="button" class="btn btn-primary btn-lg custom-btn" onclick="showDiv('toggle')"><a href = "/display" style=" color:white; text-decoration:none;">Back to Search Results</a></button>
+                    <button name="back1" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.back()" style=" color:white; text-decoration:none;">Back to Search Results</a></button>
                     &nbsp&nbsp
                   
                     <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" > <a href="/admin_dashboard" style=" color:white; text-decoration:none;">Back to Dashboard </a></button>
