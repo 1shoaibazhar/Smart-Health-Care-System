@@ -118,11 +118,16 @@
 						style="border-radius: 15px"
 					>
 						<div class="card-body p-4 p-md-5">
+<<<<<<< HEAD
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Patient Details
+								<div class="popup" ><i onclick="myFunction('toggle')"  class="fa-solid fa-circle-info popup fa-sm"></i></div>
+=======
 							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">
 								Patient Details
 								<div class="popup" onclick="myFunction('toggle')">
 									<i class="fa-solid fa-circle-info popup fa-sm"></i>
 								</div>
+>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 							</h3>
 							<div
 								id="toggle"
@@ -157,6 +162,11 @@
 									<li>Password must contain a non letter character</li>
 									<li>Address must be complete</li>
 								</ul>
+<<<<<<< HEAD
+								  
+							   </div>
+							
+=======
 								<button
 									type="button"
 									class="close"
@@ -167,6 +177,7 @@
 								</button>
 							</div>
 
+>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 							<!-- EJS Code that displays errors using bootsrap -->
 							<!-- When the page is loaded again with errors, we have alert array sent that contains errors -->
 							<% if(typeof alert != 'undefined') { %> <%
@@ -362,9 +373,20 @@
 			</div>
 		</div>
 		<script>
+<<<<<<< HEAD
+			function myFunction(toggle){
+				if (document.getElementById(toggle).style.display === "none" ) {
+                        document.getElementById(toggle).style.display = "block";
+                  } else {
+                 document.getElementById(toggle).style.display = "none";
+                 }
+		    }
+	 </script>
+=======
 			function myFunction(toggle) {
 				document.getElementById(toggle).style.display = "block";
 			}
 		</script>
+>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 	</body>
 </html>

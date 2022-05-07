@@ -140,13 +140,14 @@ a:hover {
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Employee’s Login Credentials
-                    <div class="popup" onclick="myFunction('toggle')"><i  class="fa-solid fa-circle-info popup fa-sm"></i></div>
+                    <div class="popup" ><i onclick="myFunction('toggle')" class="fa-solid fa-circle-info popup fa-sm"></i></div>
+                    <!-- <button onclick="myFunction('toggle')">click me</button> -->
                   </h3>
-                  <div id="toggle" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
+                  <div id="toggle" class="alert alert-danger alert-dismissible fade show" style="display:none;">
                     <ul>
                       <li>All fields are required</li>
                       <li>Name must be of 3 characters long and be alphabetical</li>
-                      <li> UserName must be of atleast 4 characters and at max 10 characters</li>
+                      <li>UserName must be of atleast 4 characters and at max 10 characters</li>
                       <li>UserName can only contain alphabets and numbers</li>
                       <li>Phone Number must be of atleast 7 digits and at max 15 digits</li>
                       <li>Phone Number can only contain numbers (no + sign required)</li>
@@ -157,10 +158,8 @@ a:hover {
                       <li>Password must contain at least a lower case alphabet</li>
                       <li>Password must contain a non letter character</li>
                       <li>Address must be complete</li>
-                    </ul>
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                      </ul>
+                     
                    </div>
                   <!-- EJS Code that displays errors using bootsrap -->
                   <!-- When the page is loaded again with errors, we have alert array sent that contains errors -->
@@ -354,9 +353,16 @@ a:hover {
    </script>
    <script>
     function myFunction(toggle){
-    document.getElementById(toggle).style.display = 'block';
+     
+    //document.getElementById(toggle).style.display = 'block';
+    if (document.getElementById(toggle).style.display === "none" ) {
+      document.getElementById(toggle).style.display = "block";
+  } else {
+    document.getElementById(toggle).style.display = "none";
+  }
 }
 </script>
+
     
 </body>
 </html>
