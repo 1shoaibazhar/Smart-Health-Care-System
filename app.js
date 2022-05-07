@@ -179,13 +179,28 @@ app.post("/predict_tuberculosis", (req, res) => {
 });
 
 app.post("/view", (req, res) => {
-	let user = req.body.type;
-	let typeOfUser = user.Profession;
-	if (typeOfUser != undefined) {
-		res.render("view_employee", { title: "Employee Details", User: user });
-	} else {
-		res.render("view_patient", { title: "Patient Details", User: user });
-	}
+  const user_Id = req.body.type;
+
+  patient
+    .findById(user_Id)
+    .then((result) => {
+      if (result) {
+        res.render("view_patient", { title: "Patient Details", User: result });
+      }
+    })
+    .catch((err) => console.log(err));
+
+  employee
+    .findById(user_Id)
+    .then((result) => {
+      if (result) {
+        res.render("view_employee", {
+          title: "Employee Details",
+          User: result,
+        });
+      }
+    })
+    .catch((err) => console.log(err));
 });
 
 app.post(
