@@ -178,10 +178,10 @@ app.post("/predict_tuberculosis", (req, res) => {
 	res.render("patient_dashboard");
 });
 
-app.post("/view", (req, res) => {
+app.post("/view", async (req, res) => {
   const user_Id = req.body.type;
 
-  patient
+  await patient
     .findById(user_Id)
     .then((result) => {
       if (result) {
@@ -190,7 +190,7 @@ app.post("/view", (req, res) => {
     })
     .catch((err) => console.log(err));
 
-  employee
+  await employee
     .findById(user_Id)
     .then((result) => {
       if (result) {
