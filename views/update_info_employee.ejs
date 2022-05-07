@@ -1,5 +1,5 @@
 <html lang="en">
-	<head>
+	<!-- <head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,7 @@
 			integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
 			crossorigin="anonymous"
 		/>
-		<!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"> -->
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -35,8 +35,9 @@
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"
-		></script>
-	</head>
+		></script> 
+	</head> -->
+	<%- include("./partials/head.ejs") %>
 	<style>
 		body {
 			background-image: url("/assets/img/departments-1.jpg");
@@ -71,41 +72,39 @@
 		.card-registration .select-arrow {
 			top: 13px;
 		}
-		.custom-btn{
-    box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233)!important;
-  }
-  .cu
-		.custom-btn:hover{
-    background-color: #3234a8;;
-    color: white;
-  }
+		.custom-btn {
+			box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233) !important;
+		}
+		.cu .custom-btn:hover {
+			background-color: #3234a8;
+			color: white;
+		}
 
-  .custom-btn1{
-    box-shadow: 0 2px 2px 0 rgb(239, 33, 5), 0 2px 10px 0 rgb(213, 92, 35)!important;
-  }
-  .custom-btn1:hover{
-    background-color: #c52805;;
-    color: white;
-  }
+		.custom-btn1 {
+			box-shadow: 0 2px 2px 0 rgb(239, 33, 5), 0 2px 10px 0 rgb(213, 92, 35) !important;
+		}
+		.custom-btn1:hover {
+			background-color: #c52805;
+			color: white;
+		}
 
-  .popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  
-}
+		.popup {
+			position: relative;
+			display: inline-block;
+			cursor: pointer;
+		}
 
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 20%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
+		/* Popup arrow */
+		.popup .popuptext::after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 20%;
+			margin-left: -5px;
+			border-width: 5px;
+			border-style: solid;
+			border-color: #555 transparent transparent transparent;
+		}
 	</style>
 
 	<body>
@@ -118,25 +117,64 @@
 						style="border-radius: 15px"
 					>
 						<div class="card-body p-4 p-md-5">
+<<<<<<< HEAD
 							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Employee Details
 								<div class="popup" ><i onclick="myFunction('toggle')"  class="fa-solid fa-circle-info popup fa-sm"></i></div>
+=======
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">
+								Employee Details
+								<div class="popup" onclick="myFunction('toggle')">
+									<i class="fa-solid fa-circle-info popup fa-sm"></i>
+								</div>
+>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 							</h3>
-							<div id="toggle" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
+							<div
+								id="toggle"
+								class="alert alert-info alert-dismissible fade show"
+								role="alert"
+								style="display: none"
+							>
 								<ul>
-								  <li>All fields are required</li>
-								  <li>Name must be of 3 characters long and be alphabetical</li>
-								  <li> UserName must be of atleast 4 characters and at max 10 characters</li>
-								  <li>UserName can only contain alphabets and numbers</li>
-								  <li>Phone Number must be of atleast 7 digits and at max 15 digits</li>
-								  <li>Phone Number can only contain numbers (no + sign required)</li>
-								  <li>Password must be of atleast 6 characters and at max 10 characters</li>
-								  <li>Password must contain at least an upper case alphabet</li>
-								  <li>Password must contain at least a lower case alphabet</li>
-								  <li>Password must contain a non letter character</li>
-								  <li> Address must be complete</li>
+									<li>All fields are required</li>
+									<li>Name must be of 3 characters long and be alphabetical</li>
+									<li>
+										UserName must be of atleast 4 characters and at max 10
+										characters
+									</li>
+									<li>UserName can only contain alphabets and numbers</li>
+									<li>
+										Phone Number must be of atleast 7 digits and at max 15
+										digits
+									</li>
+									<li>
+										Phone Number can only contain numbers (no + sign required)
+									</li>
+									<li>
+										Password must be of atleast 6 characters and at max 10
+										characters
+									</li>
+									<li>Password must contain at least an upper case alphabet</li>
+									<li>Password must contain at least a lower case alphabet</li>
+									<li>Password must contain a non letter character</li>
+									<li>
+										Employee Number can only be of 6 digits and is numeric
+									</li>
+									<li>Address must be complete</li>
 								</ul>
+<<<<<<< HEAD
 								 
 							   </div>
+=======
+								<button
+									type="button"
+									class="close"
+									data-dismiss="alert"
+									aria-label="Close"
+								>
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 							<!-- EJS Code that displays errors using bootsrap -->
 							<!-- When the page is loaded again with errors, we have alert array sent that contains errors -->
 							<% if(typeof alert != 'undefined') { %> <%
@@ -335,10 +373,11 @@
 						</div>
 					</div>
 				</div>
-				<br><br><br>
+				<br /><br /><br />
 			</div>
 		</div>
 		<script>
+<<<<<<< HEAD
 			function myFunction(toggle){
 				if (document.getElementById(toggle).style.display === "none" ) {
                         document.getElementById(toggle).style.display = "block";
@@ -346,6 +385,11 @@
                  document.getElementById(toggle).style.display = "none";
                  }
 		}
+=======
+			function myFunction(toggle) {
+				document.getElementById(toggle).style.display = "block";
+			}
+>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 		</script>
 	</body>
 </html>

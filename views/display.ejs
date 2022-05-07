@@ -31,6 +31,9 @@
     ======================================================== -->
 
       <style>
+
+
+        
         #header{
           background-color: #e33083!important; 
         }
@@ -125,7 +128,7 @@ a.button:hover{
               <div class="card-body p-4 p-md-5">
                   
                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Searched Results</h3>
-                <form  method="post" action="/update_info_patient">
+                <form  method="post" action="/view">
     
                   <div class="row">
                     <div class="col-md-3 ">
@@ -162,10 +165,10 @@ a.button:hover{
                           </div>
                              <div class="col-md-3 offset-md-3 mb-4">
               
-                              <button style="background-color: green;" name="View" type="button" class="btn btn-primary btn-sm"><a href = "/view_employee" style=" color:white; text-decoration:none;">View</a></button>
+                              <button style="background-color: green;" id="viewData" type="submit" class="btn btn-primary btn-sm" name="type" value="<%= user._id %>">View</button>
                               
                               <% if (Designation == "Patient") { %>
-                              <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href="/delete_patient_admin/<%= user._id %>" data-doc="<%= user._id %>" style=" color:white; text-decoration:none;" >Delete</a></button>      
+                              <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href="/delete_patient_admin/<%= user._id %>" data-doc="<%= user._id %>" style=" color:white; text-decoration:none;" >Delete</button>      
                              
                               <% } else { %>
                                 <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href="/delete_employee_admin/<%= user._id %>" data-doc="<%= user._id %>" style=" color:white; text-decoration:none;" >Delete</a></button>
