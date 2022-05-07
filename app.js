@@ -381,52 +381,48 @@ app.post(
 
 // When admin sends a delete patient request from the display page
 app.get("/delete_patient_admin/:id", (req, res) => {
-	const useriD = req.params.id;
+  const useriD = req.params.id;
 
-	// Searching all users by that name in order to display them on the search page after the current user is deleted
-	patient.findById(useriD).then((result) => {
-		const name = result.Name;
-		patient
-			.findByIdAndDelete(useriD)
-			.then((result) => {
-				patient.find({ Name: name }, function (err, doc) {
-					if (!err) {
-						res.render("display", {
-							title: "Search Results",
-							users: doc,
-							Designation: "Patient",
-						});
-					}
-				});
-			})
+  // Searching all users by that name in order to display them on the search page after the current user is deleted
+  patient.findById(useriD).then((result) => {
+    const name = result.Name;
+    patient
+      .findByIdAndDelete(useriD)
+      .then((result) => {
+        patient.find({ Name: name }, function (err, doc) {
+          res.render("display", {
+            title: "Search Results",
+            users: doc,
+            Designation: "Patient",
+          });
+        });
+      })
 
-			.catch((err) => console.log(err));
-	});
+      .catch((err) => console.log(err));
+  });
 });
 
 // When admin sends a delete employee request from the display page
 app.get("/delete_employee_admin/:id", (req, res) => {
-	const useriD = req.params.id;
+  const useriD = req.params.id;
 
-	// Searching all users by that name in order to display them on the search page after the current user is deleted
-	employee.findById(useriD).then((result) => {
-		const name = result.Name;
-		employee
-			.findByIdAndDelete(useriD)
-			.then((result) => {
-				employee.find({ Name: name }, function (err, doc) {
-					if (!err) {
-						res.render("display", {
-							title: "Search Results",
-							users: doc,
-							Designation: "Employee",
-						});
-					}
-				});
-			})
+  // Searching all users by that name in order to display them on the search page after the current user is deleted
+  employee.findById(useriD).then((result) => {
+    const name = result.Name;
+    employee
+      .findByIdAndDelete(useriD)
+      .then((result) => {
+        employee.find({ Name: name }, function (err, doc) {
+          res.render("display", {
+            title: "Search Results",
+            users: doc,
+            Designation: "Employee",
+          });
+        });
+      })
 
-			.catch((err) => console.log(err));
-	});
+      .catch((err) => console.log(err));
+  });
 });
 
 app.get("/update_patient/:id", (req, res) => {

@@ -31,6 +31,9 @@
     ======================================================== -->
 
       <style>
+
+
+        
         #header{
           background-color: #e33083!important; 
         }
@@ -165,7 +168,7 @@ a.button:hover{
                               <button style="background-color: green;" id="viewData" type="submit" class="btn btn-primary btn-sm" name="type" value="<%= user._id %>">View</button>
                               
                               <% if (Designation == "Patient") { %>
-                              <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href="/delete_patient_admin/<%= user._id %>" data-doc="<%= user._id %>" style=" color:white; text-decoration:none;" >Delete</a></button>      
+                              <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href="/delete_patient_admin/<%= user._id %>" data-doc="<%= user._id %>" style=" color:white; text-decoration:none;" >Delete</button>      
                              
                               <% } else { %>
                                 <button style="background-color: red;" name="Delete" type="button" class="btn btn-primary btn-sm"><a href="/delete_employee_admin/<%= user._id %>" data-doc="<%= user._id %>" style=" color:white; text-decoration:none;" >Delete</a></button>
