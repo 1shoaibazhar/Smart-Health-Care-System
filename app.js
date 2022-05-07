@@ -116,8 +116,9 @@ app.get("/predict_tuberculosis", (req, res) => {
 	res.render("predict_tuberculosis", { title: "Predict Tuberculosis" });
 });
 
-
-
+app.get("/view_predicted_diseases", (req, res) => {
+	res.render("view_predicted_diseases", { title: "View Predictions" });
+});
 //************form button  */
 app.post(
 	"/search",
@@ -217,6 +218,11 @@ app.post("/view_employee", (req, res) => {
 app.post("/view_employee", (req, res) => {
 	res.render("display");
 });
+
+app.post("/view_predicted_diseases", (req, res) => {
+	res.render("patient_dashboard");
+});
+
 app.post(
 	"/admin_signup",
 	urlencodedParser,
@@ -858,4 +864,9 @@ app.post("/login", async (req, res) => {
 		.catch(function (err) {
 			console.log(err);
 		});
+});
+
+
+app.get("/test", (req, res) => {
+	res.render("test");
 });
