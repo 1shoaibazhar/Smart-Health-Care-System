@@ -1,0 +1,168 @@
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+<style>
+  body{
+     background-image: url('6.jpg');
+     background-repeat: no-repeat;
+     height:609px;
+     background-size: cover;
+
+  }
+.gradient-custom {
+ 
+  background-color: #58c1f1;
+  background: -webkit-linear-gradient(to bottom right, rgb(71, 151, 197), rgb(81, 135, 235));
+  background: linear-gradient(to bottom right, rgb(86, 122, 219), rgb(63, 179, 214));
+
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+  
+}
+.card-registration .select-arrow {
+  top: 13px;
+  
+}
+
+  a:hover {
+  background-color: rgb(46, 49, 208);
+  height:40px;
+  padding-top: 10px!important;
+  }
+
+  .menu-bar{
+    background-image: linear-gradient(-90deg, #5d7a86, #022d50);
+    width:100% ;
+    height:50px;
+  }
+  .custom-btn{
+    box-shadow: 0 4px 8px 0 rgb(9, 97, 228), 0 6px 20px 0 rgb(117, 8, 233)!important;
+  }
+  .custom-btn:hover{
+    background-color: #3234a8;;
+    color: white;
+  }
+  .nav-link{
+    font-size: 20px;
+    margin: 0px;
+    color: white!important;
+    font-weight: 500;
+  }
+  .navbar-nav{
+    text-align: right;
+    margin-right: 0px;
+  }
+  .menu-bar .navbar-toggler{
+    padding-right: 10px;
+    outline: none!important;
+    border: none!important;
+  }
+  .navbar .fa{
+    color: #ffff;
+    font-size: 26px;
+  }
+  .nav-link:hover{
+    font-weight: 600;
+    border-bottom: 1px solid rgba(158, 175, 179, 0.902);
+  }
+
+  .sticky{
+    position: -webkit-sticky;
+  	position: sticky;
+	  top: 0
+  }
+
+  .custom-btn{
+    box-shadow: 0 2px 2px 0 rgb(9, 97, 228), 0 2px 10px 0 rgb(117, 8, 233)!important;
+  }
+  .custom-btn:hover{
+    background-color: #3234a8;;
+    color: white;
+  }
+
+</style>
+
+<body>
+
+  <div class="header sticky">
+    <div class="menu-bar">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/"><i>Return to Home</i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+  <section class="vh-100 ">
+      <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+          <div class="col-12 col-lg-7 col-xl-5 ">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+              <div class="card-body p-3 p-md-3">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5"style="position:relative; top: 10px; left:40px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLogin</h3>
+                <form  method="post" action="/login">
+    
+                  <div class="row justify-content-center">
+                    
+                      <div class="col-md-6 mb-3 pb-2 align-self-center">
+    
+                      <div class="form-outline flex-fill mb-0"">
+                        <input name="UserName" type="text" id="UserName" class="form-control " required />
+                        <label class=" form-label" for="UserName">Username</label>
+                      </div>
+    
+                    </div>
+                  </div>  
+                  <div class="row justify-content-center">
+                      <div class="col-md-6 mb-2 pb-2 align-self-center">
+                              <div class="form-outline flex-fill mb-0">
+                                  <input name="Password" type="password" name = "pswrd_1" id="pswrd_1" class="form-control"  required/>
+                                  <label class="form-label" for="Password">Password</label>
+                               
+                              </div>
+                        </div>
+                        <% if(unavailable != '') { %>
+                          <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                            <%= unavailable %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        <% } %>
+                  </div>
+                  
+                  <div class="mt-1 pt-4 pe-5 ps-0 ml-5">
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input name="Submit"class="btn btn-primary btn-lg custom-btn" type="submit" value="Login" />
+                    &nbsp&nbsp
+                  
+                      <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.back()" style=" color:white; text-decoration:none;" >Back</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js">  
+
+
+</script> 
+</body>
+</html>
