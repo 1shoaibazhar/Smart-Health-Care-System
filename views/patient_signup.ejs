@@ -149,7 +149,7 @@ a:hover {
                   <div class="popup" ><i onclick="myFunction('toggle')"  class="fa-solid fa-circle-info popup fa-sm"></i></div>
                   </h3> 
                         
-                           <div id="toggle" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
+                           <div id="toggle" class="alert alert-info alert-dismissible fade show" role="alert" style="display:none;">
                             <ul>
                               <li>All fields are required</li>
                               <li>Name must be of 3 characters long and be alphabetical</li>
@@ -279,13 +279,11 @@ a:hover {
                   </div>
                   <div class="row">
                     <div class="col-md-6 mb-4 pb-2">
-  
                      
-                      <div class="form-outline flex-fill mb-0">
-                          <input name="Password" type="password" name = "pswrd_1" id="pswrd_1" class="form-control"  required/>
+                      <div class="form-outline">
+                          <input name="Password" type="password" name = "pswrd_1" id="pswrd_1" class="form-control form-control-lg"  required/>
                           <label class="form-label" for="Password">Password</label>
-                          
-                       
+                        
                       </div>
                    </div>
                     <div class="col-md-6 mb-4 d-flex align-items-center">
@@ -329,35 +327,6 @@ a:hover {
     </section>
    
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js">  
-
-function checkForm(form)
-{
-
-  if(form.pswrd_1.value != "" && form.pswrd_1.value == form.pswrd_2.value) {
-    if(form.pswrd_1.value.length < 6) {
-      alert("Error: Password must contain at least six characters!");
-      form.pswrd_1.focus();
-      return false;
-    }
-    if(form.pswrd_1.value == form.username.value) {
-      alert("Error: Password must be different from Username!");
-      form.pswrd_1.focus();
-      return false;
-    }
-  }
-    
-  else {
-    alert("Error: Please check that you've entered and confirmed your password!");
-    form.pswrd_1.focus();
-    return false;
-  }
-
-
-    return true;
-  }
-
-
-
 
 </script>
 

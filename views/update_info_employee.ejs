@@ -1,42 +1,4 @@
 <html lang="en">
-	<!-- <head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-			rel="nofollow"
-			integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
-			crossorigin="anonymous"
-		/>
-		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-		/>
-		<title>Manage Account Information</title>
-		<script
-			src="https://kit.fontawesome.com/73bbf25160.js"
-			crossorigin="anonymous"
-		></script>
-
-		<script
-			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-			crossorigin="anonymous"
-		></script> 
-	</head> -->
 	<%- include("./partials/head.ejs") %>
 	<style>
 		body {
@@ -108,6 +70,7 @@
 	</style>
 
 	<body>
+		<button onclick="topFunction()" id="myBtn" title="Go to top">&#8593</button>
 		<!-- <section class="vh-100 "> -->
 		<div class="container py-5 h-100">
 			<div class="row justify-content-center align-items-center h-100">
@@ -117,16 +80,9 @@
 						style="border-radius: 15px"
 					>
 						<div class="card-body p-4 p-md-5">
-<<<<<<< HEAD
-							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Employee Details
-								<div class="popup" ><i onclick="myFunction('toggle')"  class="fa-solid fa-circle-info popup fa-sm"></i></div>
-=======
 							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">
 								Employee Details
-								<div class="popup" onclick="myFunction('toggle')">
-									<i class="fa-solid fa-circle-info popup fa-sm"></i>
-								</div>
->>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
+								<div class="popup" ><i onclick="myFunction('toggle')" class="fa-solid fa-circle-info popup fa-sm"></i></div>
 							</h3>
 							<div
 								id="toggle"
@@ -161,10 +117,6 @@
 									</li>
 									<li>Address must be complete</li>
 								</ul>
-<<<<<<< HEAD
-								 
-							   </div>
-=======
 								<button
 									type="button"
 									class="close"
@@ -174,7 +126,6 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
->>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 							<!-- EJS Code that displays errors using bootsrap -->
 							<!-- When the page is loaded again with errors, we have alert array sent that contains errors -->
 							<% if(typeof alert != 'undefined') { %> <%
@@ -377,19 +328,35 @@
 			</div>
 		</div>
 		<script>
-<<<<<<< HEAD
-			function myFunction(toggle){
-				if (document.getElementById(toggle).style.display === "none" ) {
-                        document.getElementById(toggle).style.display = "block";
-                  } else {
-                 document.getElementById(toggle).style.display = "none";
-                 }
-		}
-=======
-			function myFunction(toggle) {
-				document.getElementById(toggle).style.display = "block";
+			mybutton = document.getElementById("myBtn");
+			window.onscroll = function () {
+				scrollFunction();
+			};
+
+			function scrollFunction() {
+				if (
+					document.body.scrollTop > 20 ||
+					document.documentElement.scrollTop > 20
+				) {
+					mybutton.style.display = "block";
+				} else {
+					mybutton.style.display = "none";
+				}
 			}
->>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
+			function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			}
+		</script>
+		<script>
+			function myFunction(toggle) {
+				//document.getElementById(toggle).style.display = 'block';
+				if (document.getElementById(toggle).style.display === "none") {
+					document.getElementById(toggle).style.display = "block";
+				} else {
+					document.getElementById(toggle).style.display = "none";
+				}
+			}
 		</script>
 	</body>
 </html>

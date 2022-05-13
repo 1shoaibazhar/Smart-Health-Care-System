@@ -103,12 +103,6 @@ app.get("/predict_tuberculosis", (req, res) => {
 	res.render("predict_tuberculosis", { title: "Predict Tuberculosis" });
 });
 
-<<<<<<< HEAD
-app.get("/view_predicted_diseases", (req, res) => {
-	res.render("view_predicted_diseases", { title: "View Predictions" });
-});
-=======
->>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 //************form button  */
 app.post(
 	"/search",
@@ -185,41 +179,30 @@ app.post("/predict_tuberculosis", (req, res) => {
 });
 
 app.post("/view", async (req, res) => {
-  const user_Id = req.body.type;
+	const user_Id = req.body.type;
 
-  await patient
-    .findById(user_Id)
-    .then((result) => {
-      if (result) {
-        res.render("view_patient", { title: "Patient Details", User: result });
-      }
-    })
-    .catch((err) => console.log(err));
+	await patient
+		.findById(user_Id)
+		.then((result) => {
+			if (result) {
+				res.render("view_patient", { title: "Patient Details", User: result });
+			}
+		})
+		.catch((err) => console.log(err));
 
-  await employee
-    .findById(user_Id)
-    .then((result) => {
-      if (result) {
-        res.render("view_employee", {
-          title: "Employee Details",
-          User: result,
-        });
-      }
-    })
-    .catch((err) => console.log(err));
+	await employee
+		.findById(user_Id)
+		.then((result) => {
+			if (result) {
+				res.render("view_employee", {
+					title: "Employee Details",
+					User: result,
+				});
+			}
+		})
+		.catch((err) => console.log(err));
 });
 
-<<<<<<< HEAD
-app.post("/view_employee", (req, res) => {
-	res.render("display");
-});
-
-app.post("/view_predicted_diseases", (req, res) => {
-	res.render("patient_dashboard");
-});
-
-=======
->>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 app.post(
 	"/admin_signup",
 	urlencodedParser,
@@ -398,48 +381,48 @@ app.post(
 
 // When admin sends a delete patient request from the display page
 app.get("/delete_patient_admin/:id", (req, res) => {
-  const useriD = req.params.id;
+	const useriD = req.params.id;
 
-  // Searching all users by that name in order to display them on the search page after the current user is deleted
-  patient.findById(useriD).then((result) => {
-    const name = result.Name;
-    patient
-      .findByIdAndDelete(useriD)
-      .then((result) => {
-        patient.find({ Name: name }, function (err, doc) {
-          res.render("display", {
-            title: "Search Results",
-            users: doc,
-            Designation: "Patient",
-          });
-        });
-      })
+	// Searching all users by that name in order to display them on the search page after the current user is deleted
+	patient.findById(useriD).then((result) => {
+		const name = result.Name;
+		patient
+			.findByIdAndDelete(useriD)
+			.then((result) => {
+				patient.find({ Name: name }, function (err, doc) {
+					res.render("display", {
+						title: "Search Results",
+						users: doc,
+						Designation: "Patient",
+					});
+				});
+			})
 
-      .catch((err) => console.log(err));
-  });
+			.catch((err) => console.log(err));
+	});
 });
 
 // When admin sends a delete employee request from the display page
 app.get("/delete_employee_admin/:id", (req, res) => {
-  const useriD = req.params.id;
+	const useriD = req.params.id;
 
-  // Searching all users by that name in order to display them on the search page after the current user is deleted
-  employee.findById(useriD).then((result) => {
-    const name = result.Name;
-    employee
-      .findByIdAndDelete(useriD)
-      .then((result) => {
-        employee.find({ Name: name }, function (err, doc) {
-          res.render("display", {
-            title: "Search Results",
-            users: doc,
-            Designation: "Employee",
-          });
-        });
-      })
+	// Searching all users by that name in order to display them on the search page after the current user is deleted
+	employee.findById(useriD).then((result) => {
+		const name = result.Name;
+		employee
+			.findByIdAndDelete(useriD)
+			.then((result) => {
+				employee.find({ Name: name }, function (err, doc) {
+					res.render("display", {
+						title: "Search Results",
+						users: doc,
+						Designation: "Employee",
+					});
+				});
+			})
 
-      .catch((err) => console.log(err));
-  });
+			.catch((err) => console.log(err));
+	});
 });
 
 app.get("/update_patient/:id", (req, res) => {
@@ -871,9 +854,4 @@ app.post("/login", async (req, res) => {
 		.catch(function (err) {
 			console.log(err);
 		});
-});
-
-
-app.get("/test", (req, res) => {
-	res.render("test");
 });
