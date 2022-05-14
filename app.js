@@ -558,6 +558,23 @@ app.post("/view", async (req, res) => {
 		.catch((err) => console.log(err));
 });
 
+app.post("/view_predicted_diseases", (req, res) => {
+	let userName = req.body.ViewPredictions;
+	disease.findOne({ UserName: userName }, function (err, doc) {
+		if (doc) {
+			res.render("view_predicted_diseases", {
+				title: "Predicted Diseases",
+				diseases: doc,
+			});
+		} else {
+			res.render("view_predicted_diseases", {
+				title: "Predicted Diseases",
+				diseases: undefined,
+			});
+		}
+	});
+});
+
 app.post(
 	"/admin_signup",
 	urlencodedParser,

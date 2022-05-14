@@ -76,7 +76,11 @@
 
       <!-- <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a> -->
       <a href="/update_patient/<%= userID %>" class="appointment-btn"><span class="d-none d-md-inline">Manage Account</span></a>
-      <a href="/view_predicted_diseases" class="appointment-btn"><span class="d-none d-md-inline">View Predictions</span></a>
+      <!-- <a href="/view_predicted_diseases" class="appointment-btn"><span class="d-none d-md-inline">View Predictions</span></a> -->
+      <form action="/view_predicted_diseases" method="post">
+        <button name="ViewPredictions" type="submit" class="appointment-btn" value="<%= UserObj.UserName %>">View Predictions</a></button>
+      </form>
+      
       <a href="/" class="appointment-btn"><span class="d-none d-md-inline">Sign Out</span></a>
 
     </div>
