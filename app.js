@@ -12,6 +12,8 @@ const { check, validationResult } = require("express-validator");
 const employee = require("./models/employees");
 const admin = require("./models/admins");
 const patient = require("./models/patients");
+const disease = require("./models/diseases");
+const { nextTick } = require("process");
 
 // Linking mongodb Atlas database and then starting the server
 const mongodbURL = String(process.env.MONGO_URL);
@@ -73,7 +75,6 @@ app.get("/admin_signup", (req, res) => {
 app.get("/admin_dashboard", (req, res) => {
 	res.render("admin_dashboard", { title: "Admin Dashboard" });
 });
-
 //***********************page redirection link anchor tag/ normal buttons outside form  */
 app.get("/search", (req, res) => {
 	res.render("search", { title: "Search Patient/Employee" });
@@ -154,28 +155,262 @@ app.post(
 	}
 );
 
+app.get("/predict_heartattack/:id", (req, res) => {
+	const useriD = req.params.id;
+	patient.findById(useriD).then((result) => {
+		res.render("predict_heartattack", {
+			title: "Predict Heart Attack",
+			User: result,
+		});
+	});
+});
+
 app.post("/predict_heartattack", (req, res) => {
-	res.render("patient_dashboard");
+	const symptoms = {
+		ChestPain: req.body.ChestPain,
+		Bodyache: req.body.Bodyache,
+		Lightheaded: req.body.Lightheaded,
+		Sweating: req.body.Sweating,
+		ShortnessOfBreath: req.body.ShortnessOfBreath,
+	};
+	let diseaseChances = 0;
+	if (symptoms.ChestPain != undefined) {
+		diseaseChances += 35;
+	}
+	if (symptoms.Bodyache != undefined) {
+		diseaseChances += 15;
+	}
+	if (symptoms.Lightheaded != undefined) {
+		diseaseChances += 10;
+	}
+	if (symptoms.Sweating != undefined) {
+		diseaseChances += 15;
+	}
+	if (symptoms.ShortnessOfBreath != undefined) {
+		diseaseChances += 15;
+	}
+	const userName = req.body.Predict;
+	disease.findOne({ UserName: userName }, function (err, doc) {
+		if (doc) {
+			disease.findOneAndUpdate(
+				{ UserName: userName },
+				{ HeartAttack: diseaseChances },
+				{ upsert: true },
+				function (err, doc1) {
+					if (err) return res.send(500, { error: err });
+				}
+			);
+		} else {
+			const data = {
+				UserName: userName,
+				HeartAttack: diseaseChances,
+				Diabetes: null,
+				Jaundice: null,
+				Malaria: null,
+				Appendicitis: null,
+				Tuberculosis: null,
+			};
+			var myData = new disease(data);
+			myData.save();
+		}
+	});
+
+	res.render("predict_heartattack", {
+		title: "Predict Heart Attack",
+		symptoms: symptoms,
+		Chances: diseaseChances,
+	});
+});
+
+app.get("/predict_diabetes/:id", (req, res) => {
+	const useriD = req.params.id;
+	patient.findById(useriD).then((result) => {
+		res.render("predict_diabetes", {
+			title: "Predict Diabetes",
+			User: result,
+		});
+	});
 });
 
 app.post("/predict_diabetes", (req, res) => {
-	res.render("patient_dashboard");
-});
+	const symptoms = {
+		Fatigue: req.body.Fatigue,
+		Polydipsia: req.body.Polydipsia,
+		Polyuria: req.body.Polyuria,
+		Polyphagia: req.body.Polyphagia,
+		Dizziness: req.body.Dizziness,
+	};
+	let diseaseChances = 0;
+	if (symptoms.Fatigue != undefined) {
+		diseaseChances += 15;
+	}
+	if (symptoms.Polydipsia != undefined) {
+		diseaseChances += 25;
+	}
+	if (symptoms.Polyuria != undefined) {
+		diseaseChances += 20;
+	}
+	if (symptoms.Polyphagia != undefined) {
+		diseaseChances += 16;
+	}
+	if (symptoms.Dizziness != undefined) {
+		diseaseChances += 17;
+	}
+	const userName = req.body.Predict;
+	disease.findOne({ UserName: userName }, function (err, doc) {
+		if (doc) {
+			disease.findOneAndUpdate(
+				{ UserName: userName },
+				{ Diabetes: diseaseChances },
+				{ upsert: true },
+				function (err, doc1) {
+					if (err) return res.send(500, { error: err });
+				}
+			);
+		} else {
+			const data = {
+				UserName: userName,
+				HeartAttack: null,
+				Diabetes: diseaseChances,
+				Jaundice: null,
+				Malaria: null,
+				Appendicitis: null,
+				Tuberculosis: null,
+			};
+			var myData = new disease(data);
+			myData.save();
+		}
+	});
 
-app.post("/predict_appendicitis", (req, res) => {
-	res.render("patient_dashboard");
+	res.render("predict_diabetes", {
+		title: "Predict Diabetes",
+		symptoms: symptoms,
+		Chances: diseaseChances,
+	});
 });
 
 app.post("/predict_jaundice", (req, res) => {
-	res.render("patient_dashboard");
+	const symptoms = {
+		YellowEyes: req.body.YellowEyes,
+		YellowSkin: req.body.YellowSkin,
+		YellowBodyFluids: req.body.YellowBodyFluids,
+		ItchySkin: req.body.ItchySkin,
+		LighterDarkerStool: req.body.LighterDarkerStool,
+	};
+	let diseaseChances = 0;
+	if (symptoms.YellowEyes != undefined) {
+		diseaseChances += 20;
+	}
+	if (symptoms.YellowSkin != undefined) {
+		diseaseChances += 22;
+	}
+	if (symptoms.YellowBodyFluids != undefined) {
+		diseaseChances += 25;
+	}
+	if (symptoms.ItchySkin != undefined) {
+		diseaseChances += 10;
+	}
+	if (symptoms.LighterDarkerStool != undefined) {
+		diseaseChances += 18;
+	}
+	res.render("predict_jaundice", {
+		title: "Predict Jaundice",
+		symptoms: symptoms,
+		Chances: diseaseChances,
+	});
 });
 
 app.post("/predict_malaria", (req, res) => {
-	res.render("patient_dashboard");
+	const symptoms = {
+		HighTemperature: req.body.HighTemperature,
+		Headache: req.body.Headache,
+		Drowsy: req.body.Drowsy,
+		Diarrhoea: req.body.Diarrhoea,
+		LossOfAppetite: req.body.LossOfAppetite,
+	};
+	let diseaseChances = 0;
+	if (symptoms.HighTemperature != undefined) {
+		diseaseChances += 30;
+	}
+	if (symptoms.Headache != undefined) {
+		diseaseChances += 20;
+	}
+	if (symptoms.Drowsy != undefined) {
+		diseaseChances += 10;
+	}
+	if (symptoms.Diarrhoea != undefined) {
+		diseaseChances += 18;
+	}
+	if (symptoms.LossOfAppetite != undefined) {
+		diseaseChances += 15;
+	}
+	res.render("predict_malaria", {
+		title: "Predict Malaria",
+		symptoms: symptoms,
+		Chances: diseaseChances,
+	});
+});
+
+app.post("/predict_appendicitis", (req, res) => {
+	const symptoms = {
+		Nausea: req.body.Nausea,
+		Constipation: req.body.Constipation,
+		Diarrhoea: req.body.Diarrhoea,
+		HighTemperature: req.body.HighTemperature,
+		LossOfAppetite: req.body.LossOfAppetite,
+	};
+	let diseaseChances = 0;
+	if (symptoms.Nausea != undefined) {
+		diseaseChances += 20;
+	}
+	if (symptoms.Constipation != undefined) {
+		diseaseChances += 15;
+	}
+	if (symptoms.Diarrhoea != undefined) {
+		diseaseChances += 18;
+	}
+	if (symptoms.HighTemperature != undefined) {
+		diseaseChances += 19;
+	}
+	if (symptoms.LossOfAppetite != undefined) {
+		diseaseChances += 20;
+	}
+	res.render("predict_appendicitis", {
+		title: "Predict Appendicitis",
+		symptoms: symptoms,
+		Chances: diseaseChances,
+	});
 });
 
 app.post("/predict_tuberculosis", (req, res) => {
-	res.render("patient_dashboard");
+	const symptoms = {
+		LackOfAppetite: req.body.LackOfAppetite,
+		WeightLoss: req.body.WeightLoss,
+		HighTemperature: req.body.HighTemperature,
+		NightSweats: req.body.NightSweats,
+		Fatigue: req.body.Fatigue,
+	};
+	let diseaseChances = 0;
+	if (symptoms.LackOfAppetite != undefined) {
+		diseaseChances += 10;
+	}
+	if (symptoms.WeightLoss != undefined) {
+		diseaseChances += 20;
+	}
+	if (symptoms.HighTemperature != undefined) {
+		diseaseChances += 20;
+	}
+	if (symptoms.NightSweats != undefined) {
+		diseaseChances += 25;
+	}
+	if (symptoms.Fatigue != undefined) {
+		diseaseChances += 22;
+	}
+	res.render("predict_tuberculosis", {
+		title: "Predict Tuberculosis",
+		symptoms: symptoms,
+		Chances: diseaseChances,
+	});
 });
 
 app.post("/view", async (req, res) => {

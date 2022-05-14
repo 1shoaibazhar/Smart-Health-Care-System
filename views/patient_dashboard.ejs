@@ -59,8 +59,7 @@
     <div class="container d-flex align-items-center">
 
       <h1 class="logo me-auto"><a href="patient_dashboard.html">MediCare</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+     
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -69,23 +68,7 @@
           <li><a class="nav-link scrollto" href="#services">Diagnosis</a></li>
           <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> -->
+          
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -253,7 +236,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-heartbeat"></i></div>
-              <h4><a href="/predict_heartattack">Heart Attack</a></h4>
+              <h4><a href="/predict_heartattack/<%= userID %>">Heart Attack</a></h4>
               <p>A heart attack, also called a myocardial infarction, happens when a part of the heart muscle doesn’t get enough blood.</p>
             </div>
           </div>
@@ -261,7 +244,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-pills"></i></div>
-              <h4><a href="/predict_diabetes">Diabetes</a></h4>
+              <h4><a href="/predict_diabetes/<%= userID %>">Diabetes</a></h4>
               <p>Diabetes is a lifelong condition that causes a person's blood sugar level to become too high.</p>
             </div>
           </div>
@@ -269,7 +252,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-hospital-user"></i></div>
-              <h4><a href="predict_jaundice">Jaundice</a></h4>
+              <h4><a href="/predict_jaundice/<%= userID %>">Jaundice</a></h4>
               <p>Jaundice is when your skin or the whites of your eyes turn yellow. It can be a sign of something serious, such as liver disease.</p>
             </div>
           </div>
@@ -277,7 +260,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="predict_malaria">Malaria</a></h4>
+              <h4><a href="/predict_malaria/<%= userID %>">Malaria</a></h4>
               <p>Malaria is a serious infection spread by mosquitoes.</p>
             </div>
           </div>
@@ -285,7 +268,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-wheelchair"></i></div>
-              <h4><a href="/predict_appendicitis">Appendicitis</a></h4>
+              <h4><a href="/predict_appendicitis/<%= userID %>">Appendicitis</a></h4>
               <p>Appendicitis is a painful swelling of the appendix. The appendix is a small, thin pouch about 5 to 10cm (2 to 4 inches) long.</p>
             </div>
           </div>
@@ -293,7 +276,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="predict_tuberculosis">Tuberculosis </a></h4>
+              <h4><a href="/predict_tuberculosis/<%= userID %>">Tuberculosis </a></h4>
               <p>Tuberculosis (TB) is a bacterial infection spread through inhaling tiny droplets from the coughs or sneezes of an infected person.</p>
             </div>
           </div>
