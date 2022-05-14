@@ -93,6 +93,9 @@ app.post(
 			.withMessage("Name must be of 3 characters long.")
 			.matches(/^[A-Za-z\s]+$/)
 			.withMessage("Name must be alphabetic."),
+		check("Designation")
+			.exists()
+			.withMessage("Designation is required for searching"),
 	],
 	(req, res) => {
 		const errors = validationResult(req);
@@ -166,36 +169,47 @@ app.post("/predict_heartattack", (req, res) => {
 		diseaseChances += 15;
 	}
 	const userName = req.body.Predict;
-	disease.findOne({ UserName: userName }, function (err, doc) {
-		if (doc) {
-			disease.findOneAndUpdate(
-				{ UserName: userName },
-				{ HeartAttack: diseaseChances },
-				{ upsert: true },
-				function (err, doc1) {
-					if (err) return res.send(500, { error: err });
-				}
-			);
-		} else {
-			const data = {
-				UserName: userName,
-				HeartAttack: diseaseChances,
-				Diabetes: null,
-				Jaundice: null,
-				Malaria: null,
-				Appendicitis: null,
-				Tuberculosis: null,
-			};
-			var myData = new disease(data);
-			myData.save();
-		}
-	});
+	if (diseaseChances == 0) {
+		patient.findOne({ UserName: userName }, function (err, doc) {
+			res.render("predict_heartattack", {
+				title: "Predict Heart Attack",
+				selection:
+					"No prediction possible, as none of the symptoms were selected",
+				User: doc,
+			});
+		});
+	} else {
+		disease.findOne({ UserName: userName }, function (err, doc) {
+			if (doc) {
+				disease.findOneAndUpdate(
+					{ UserName: userName },
+					{ HeartAttack: diseaseChances },
+					{ upsert: true },
+					function (err, doc1) {
+						if (err) return res.send(500, { error: err });
+					}
+				);
+			} else {
+				const data = {
+					UserName: userName,
+					HeartAttack: diseaseChances,
+					Diabetes: null,
+					Jaundice: null,
+					Malaria: null,
+					Appendicitis: null,
+					Tuberculosis: null,
+				};
+				var myData = new disease(data);
+				myData.save();
+			}
+		});
 
-	res.render("predict_heartattack", {
-		title: "Predict Heart Attack",
-		symptoms: symptoms,
-		Chances: diseaseChances,
-	});
+		res.render("predict_heartattack", {
+			title: "Predict Heart Attack",
+			symptoms: symptoms,
+			Chances: diseaseChances,
+		});
+	}
 });
 
 app.get("/predict_diabetes/:id", (req, res) => {
@@ -233,36 +247,47 @@ app.post("/predict_diabetes", (req, res) => {
 		diseaseChances += 17;
 	}
 	const userName = req.body.Predict;
-	disease.findOne({ UserName: userName }, function (err, doc) {
-		if (doc) {
-			disease.findOneAndUpdate(
-				{ UserName: userName },
-				{ Diabetes: diseaseChances },
-				{ upsert: true },
-				function (err, doc1) {
-					if (err) return res.send(500, { error: err });
-				}
-			);
-		} else {
-			const data = {
-				UserName: userName,
-				HeartAttack: null,
-				Diabetes: diseaseChances,
-				Jaundice: null,
-				Malaria: null,
-				Appendicitis: null,
-				Tuberculosis: null,
-			};
-			var myData = new disease(data);
-			myData.save();
-		}
-	});
+	if (diseaseChances == 0) {
+		patient.findOne({ UserName: userName }, function (err, doc) {
+			res.render("predict_diabetes", {
+				title: "Predict Diabetes",
+				selection:
+					"No prediction possible, as none of the symptoms were selected",
+				User: doc,
+			});
+		});
+	} else {
+		disease.findOne({ UserName: userName }, function (err, doc) {
+			if (doc) {
+				disease.findOneAndUpdate(
+					{ UserName: userName },
+					{ Diabetes: diseaseChances },
+					{ upsert: true },
+					function (err, doc1) {
+						if (err) return res.send(500, { error: err });
+					}
+				);
+			} else {
+				const data = {
+					UserName: userName,
+					HeartAttack: null,
+					Diabetes: diseaseChances,
+					Jaundice: null,
+					Malaria: null,
+					Appendicitis: null,
+					Tuberculosis: null,
+				};
+				var myData = new disease(data);
+				myData.save();
+			}
+		});
 
-	res.render("predict_diabetes", {
-		title: "Predict Diabetes",
-		symptoms: symptoms,
-		Chances: diseaseChances,
-	});
+		res.render("predict_diabetes", {
+			title: "Predict Diabetes",
+			symptoms: symptoms,
+			Chances: diseaseChances,
+		});
+	}
 });
 
 app.get("/predict_jaundice/:id", (req, res) => {
@@ -300,36 +325,47 @@ app.post("/predict_jaundice", (req, res) => {
 		diseaseChances += 18;
 	}
 	const userName = req.body.Predict;
-	disease.findOne({ UserName: userName }, function (err, doc) {
-		if (doc) {
-			disease.findOneAndUpdate(
-				{ UserName: userName },
-				{ Jaundice: diseaseChances },
-				{ upsert: true },
-				function (err, doc1) {
-					if (err) return res.send(500, { error: err });
-				}
-			);
-		} else {
-			const data = {
-				UserName: userName,
-				HeartAttack: null,
-				Diabetes: null,
-				Jaundice: diseaseChances,
-				Malaria: null,
-				Appendicitis: null,
-				Tuberculosis: null,
-			};
-			var myData = new disease(data);
-			myData.save();
-		}
-	});
+	if (diseaseChances == 0) {
+		patient.findOne({ UserName: userName }, function (err, doc) {
+			res.render("predict_jaundice", {
+				title: "Predict Jaundice",
+				selection:
+					"No prediction possible, as none of the symptoms were selected",
+				User: doc,
+			});
+		});
+	} else {
+		disease.findOne({ UserName: userName }, function (err, doc) {
+			if (doc) {
+				disease.findOneAndUpdate(
+					{ UserName: userName },
+					{ Jaundice: diseaseChances },
+					{ upsert: true },
+					function (err, doc1) {
+						if (err) return res.send(500, { error: err });
+					}
+				);
+			} else {
+				const data = {
+					UserName: userName,
+					HeartAttack: null,
+					Diabetes: null,
+					Jaundice: diseaseChances,
+					Malaria: null,
+					Appendicitis: null,
+					Tuberculosis: null,
+				};
+				var myData = new disease(data);
+				myData.save();
+			}
+		});
 
-	res.render("predict_jaundice", {
-		title: "Predict Jaundice",
-		symptoms: symptoms,
-		Chances: diseaseChances,
-	});
+		res.render("predict_jaundice", {
+			title: "Predict Jaundice",
+			symptoms: symptoms,
+			Chances: diseaseChances,
+		});
+	}
 });
 
 app.get("/predict_malaria/:id", (req, res) => {
@@ -367,36 +403,47 @@ app.post("/predict_malaria", (req, res) => {
 		diseaseChances += 15;
 	}
 	const userName = req.body.Predict;
-	disease.findOne({ UserName: userName }, function (err, doc) {
-		if (doc) {
-			disease.findOneAndUpdate(
-				{ UserName: userName },
-				{ Malaria: diseaseChances },
-				{ upsert: true },
-				function (err, doc1) {
-					if (err) return res.send(500, { error: err });
-				}
-			);
-		} else {
-			const data = {
-				UserName: userName,
-				HeartAttack: null,
-				Diabetes: null,
-				Jaundice: null,
-				Malaria: diseaseChances,
-				Appendicitis: null,
-				Tuberculosis: null,
-			};
-			var myData = new disease(data);
-			myData.save();
-		}
-	});
+	if (diseaseChances == 0) {
+		patient.findOne({ UserName: userName }, function (err, doc) {
+			res.render("predict_malaria", {
+				title: "Predict Malaria",
+				selection:
+					"No prediction possible, as none of the symptoms were selected",
+				User: doc,
+			});
+		});
+	} else {
+		disease.findOne({ UserName: userName }, function (err, doc) {
+			if (doc) {
+				disease.findOneAndUpdate(
+					{ UserName: userName },
+					{ Malaria: diseaseChances },
+					{ upsert: true },
+					function (err, doc1) {
+						if (err) return res.send(500, { error: err });
+					}
+				);
+			} else {
+				const data = {
+					UserName: userName,
+					HeartAttack: null,
+					Diabetes: null,
+					Jaundice: null,
+					Malaria: diseaseChances,
+					Appendicitis: null,
+					Tuberculosis: null,
+				};
+				var myData = new disease(data);
+				myData.save();
+			}
+		});
 
-	res.render("predict_malaria", {
-		title: "Predict Malaria",
-		symptoms: symptoms,
-		Chances: diseaseChances,
-	});
+		res.render("predict_malaria", {
+			title: "Predict Malaria",
+			symptoms: symptoms,
+			Chances: diseaseChances,
+		});
+	}
 });
 
 app.get("/predict_appendicitis/:id", (req, res) => {
@@ -434,36 +481,47 @@ app.post("/predict_appendicitis", (req, res) => {
 		diseaseChances += 20;
 	}
 	const userName = req.body.Predict;
-	disease.findOne({ UserName: userName }, function (err, doc) {
-		if (doc) {
-			disease.findOneAndUpdate(
-				{ UserName: userName },
-				{ Appendicitis: diseaseChances },
-				{ upsert: true },
-				function (err, doc1) {
-					if (err) return res.send(500, { error: err });
-				}
-			);
-		} else {
-			const data = {
-				UserName: userName,
-				HeartAttack: null,
-				Diabetes: null,
-				Jaundice: null,
-				Malaria: null,
-				Appendicitis: diseaseChances,
-				Tuberculosis: null,
-			};
-			var myData = new disease(data);
-			myData.save();
-		}
-	});
+	if (diseaseChances == 0) {
+		patient.findOne({ UserName: userName }, function (err, doc) {
+			res.render("predict_appendicitis", {
+				title: "Predict Appendicitis",
+				selection:
+					"No prediction possible, as none of the symptoms were selected",
+				User: doc,
+			});
+		});
+	} else {
+		disease.findOne({ UserName: userName }, function (err, doc) {
+			if (doc) {
+				disease.findOneAndUpdate(
+					{ UserName: userName },
+					{ Appendicitis: diseaseChances },
+					{ upsert: true },
+					function (err, doc1) {
+						if (err) return res.send(500, { error: err });
+					}
+				);
+			} else {
+				const data = {
+					UserName: userName,
+					HeartAttack: null,
+					Diabetes: null,
+					Jaundice: null,
+					Malaria: null,
+					Appendicitis: diseaseChances,
+					Tuberculosis: null,
+				};
+				var myData = new disease(data);
+				myData.save();
+			}
+		});
 
-	res.render("predict_appendicitis", {
-		title: "Predict Appendicitis",
-		symptoms: symptoms,
-		Chances: diseaseChances,
-	});
+		res.render("predict_appendicitis", {
+			title: "Predict Appendicitis",
+			symptoms: symptoms,
+			Chances: diseaseChances,
+		});
+	}
 });
 
 app.get("/predict_tuberculosis/:id", (req, res) => {
@@ -501,36 +559,47 @@ app.post("/predict_tuberculosis", (req, res) => {
 		diseaseChances += 22;
 	}
 	const userName = req.body.Predict;
-	disease.findOne({ UserName: userName }, function (err, doc) {
-		if (doc) {
-			disease.findOneAndUpdate(
-				{ UserName: userName },
-				{ Tuberculosis: diseaseChances },
-				{ upsert: true },
-				function (err, doc1) {
-					if (err) return res.send(500, { error: err });
-				}
-			);
-		} else {
-			const data = {
-				UserName: userName,
-				HeartAttack: null,
-				Diabetes: null,
-				Jaundice: null,
-				Malaria: null,
-				Appendicitis: null,
-				Tuberculosis: diseaseChances,
-			};
-			var myData = new disease(data);
-			myData.save();
-		}
-	});
+	if (diseaseChances == 0) {
+		patient.findOne({ UserName: userName }, function (err, doc) {
+			res.render("predict_tuberculosis", {
+				title: "Predict Tuberculosis",
+				selection:
+					"No prediction possible, as none of the symptoms were selected",
+				User: doc,
+			});
+		});
+	} else {
+		disease.findOne({ UserName: userName }, function (err, doc) {
+			if (doc) {
+				disease.findOneAndUpdate(
+					{ UserName: userName },
+					{ Tuberculosis: diseaseChances },
+					{ upsert: true },
+					function (err, doc1) {
+						if (err) return res.send(500, { error: err });
+					}
+				);
+			} else {
+				const data = {
+					UserName: userName,
+					HeartAttack: null,
+					Diabetes: null,
+					Jaundice: null,
+					Malaria: null,
+					Appendicitis: null,
+					Tuberculosis: diseaseChances,
+				};
+				var myData = new disease(data);
+				myData.save();
+			}
+		});
 
-	res.render("predict_tuberculosis", {
-		title: "Predict Tuberculosis",
-		symptoms: symptoms,
-		Chances: diseaseChances,
-	});
+		res.render("predict_tuberculosis", {
+			title: "Predict Tuberculosis",
+			symptoms: symptoms,
+			Chances: diseaseChances,
+		});
+	}
 });
 
 app.post("/view", async (req, res) => {

@@ -88,6 +88,9 @@ a.button:hover{
                           name="ChestPain"
                           id="ChestPain"
                           value="ChestPain"
+                          <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                          <% } %>  
                           <% if(typeof symptoms != 'undefined') { %>
                             disabled="true"
                             <% if(typeof symptoms.ChestPain != 'undefined') { %>
@@ -105,6 +108,9 @@ a.button:hover{
                         name="Bodyache"
                         id="Bodyache"
                         value="Bodyache"
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                        <% } %>
                         <% if(typeof symptoms != 'undefined') { %>
                           disabled="true"
                           <% if(typeof symptoms.Bodyache != 'undefined') { %>
@@ -122,6 +128,9 @@ a.button:hover{
                         name="Lightheaded"
                         id="Lightheaded"
                         value="Lightheaded"
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                        <% } %>
                         <% if(typeof symptoms != 'undefined') { %>
                           disabled="true"
                           <% if(typeof symptoms.Lightheaded != 'undefined') { %>
@@ -139,6 +148,9 @@ a.button:hover{
                         name="Sweating"
                         id="Sweating"
                         value="Sweating"
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                        <% } %>
                         <% if(typeof symptoms != 'undefined') { %>
                           disabled="true"
                           <% if(typeof symptoms.Sweating != 'undefined') { %>
@@ -156,6 +168,9 @@ a.button:hover{
                         name="ShortnessOfBreath"
                         id="ShortnessOfBreath"
                         value="ShortnessOfBreath"
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                        <% } %>
                         <% if(typeof symptoms != 'undefined') { %>
                           disabled="true"
                           <% if(typeof symptoms.ShortnessOfBreath != 'undefined') { %>
@@ -172,14 +187,19 @@ a.button:hover{
     
                   <div class="mt-4 pt-2">
                     <% if(typeof Chances == 'undefined') { %>
-                    <button name="Predict" type="submit" class="btn btn-primary btn-lg custom-btn" value="<%= User.UserName %>">Predict</a></button>
-                    &nbsp&nbsp
-                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-1)">Back to Dashboard</button>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <% if(typeof selection == 'undefined') { %>
+                        <button name="Predict" type="submit" class="btn btn-primary btn-lg custom-btn" value="<%= User.UserName %>">Predict</a></button>
+                        &nbsp&nbsp
+                        <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-1)">Back to Dashboard</button>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                      <% } else { %>
+                        <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-2)">Back to Dashboard</button>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <% } %>
                     <% } else { %>
-                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-2)">Back to Dashboard</button>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <% } %>  
+                      <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-2)">Back to Dashboard</button>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
+                    <% } %>
                   </div>
 
                   <br><br>
@@ -188,6 +208,14 @@ a.button:hover{
                     <h5 style="color:red;display:inline;">Prediction : </h5>
                     <h5 style="display:inline;">You have a <%= Chances %> percent chance of having a heart attack</h5>
                   </div>
+                  <% } %>
+                  <% if(typeof selection != 'undefined') { %>
+                      <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                      <%= selection %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
                   <% } %>
               </form>
               </div>

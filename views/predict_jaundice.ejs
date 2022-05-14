@@ -91,6 +91,9 @@ a.button:hover{
                           name="YellowEyes"
                           id="YellowEyes"
                           value="YellowEyes"
+                          <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                          <% } %>
                           <% if(typeof symptoms != 'undefined') { %>
                             disabled="true"
                             <% if(typeof symptoms.YellowEyes != 'undefined') { %>
@@ -108,6 +111,9 @@ a.button:hover{
                         name="YellowSkin"
                         id="YellowSkin"
                         value="YellowSkin"
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                          <% } %>
                         <% if(typeof symptoms != 'undefined') { %>
                             disabled="true"
                             <% if(typeof symptoms.YellowSkin != 'undefined') { %>
@@ -125,6 +131,9 @@ a.button:hover{
                         name="YellowBodyFluids"
                         id="YellowBodyFluids"
                         value="YellowBodyFluids"
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                          <% } %>
                         <% if(typeof symptoms != 'undefined') { %>
                             disabled="true"
                             <% if(typeof symptoms.YellowBodyFluids != 'undefined') { %>
@@ -142,6 +151,9 @@ a.button:hover{
                         name="ItchySkin"
                         id="ItchySkin"
                         value="ItchySkin"
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                          <% } %>
                         <% if(typeof symptoms != 'undefined') { %>
                             disabled="true"
                             <% if(typeof symptoms.ItchySkin != 'undefined') { %>
@@ -159,6 +171,9 @@ a.button:hover{
                         name="LighterDarkerStool"
                         id="LighterDarkerStool"
                         value="LighterDarkerStool"
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                          <% } %>
                         <% if(typeof symptoms != 'undefined') { %>
                             disabled="true"
                             <% if(typeof symptoms.LighterDarkerStool != 'undefined') { %>
@@ -175,13 +190,18 @@ a.button:hover{
     
                   <div class="mt-4 pt-2">
                     <% if(typeof Chances == 'undefined') { %>
-                    <button name="Predict" type="submit" class="btn btn-primary btn-lg custom-btn" value="<%= User.UserName %>">Predict</a></button>
-                    &nbsp&nbsp
-                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-1)">Back to Dashboard</button>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <% if(typeof selection == 'undefined') { %>
+                        <button name="Predict" type="submit" class="btn btn-primary btn-lg custom-btn" value="<%= User.UserName %>">Predict</a></button>
+                        &nbsp&nbsp
+                        <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-1)">Back to Dashboard</button>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                      <% } else { %>
+                        <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-2)">Back to Dashboard</button>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <% } %>
                     <% } else { %>
-                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-2)">Back to Dashboard</button>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-2)">Back to Dashboard</button>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
                     <% } %>
                   </div>
 
