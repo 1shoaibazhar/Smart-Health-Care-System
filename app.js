@@ -80,30 +80,6 @@ app.get("/search", (req, res) => {
 	res.render("search", { title: "Search Patient/Employee" });
 });
 
-app.get("/predict_heartattack", (req, res) => {
-	res.render("predict_heartattack", { title: "Predict Heart Attack" });
-});
-
-app.get("/predict_diabetes", (req, res) => {
-	res.render("predict_diabetes", { title: "Predict Diabetes" });
-});
-
-app.get("/predict_jaundice", (req, res) => {
-	res.render("predict_jaundice", { title: "Predict Jaundice" });
-});
-
-app.get("/predict_malaria", (req, res) => {
-	res.render("predict_malaria", { title: "Predict Malaria" });
-});
-
-app.get("/predict_appendicitis", (req, res) => {
-	res.render("predict_appendicitis", { title: "Predict Appendicitis" });
-});
-
-app.get("/predict_tuberculosis", (req, res) => {
-	res.render("predict_tuberculosis", { title: "Predict Tuberculosis" });
-});
-
 //************form button  */
 app.post(
 	"/search",
@@ -289,6 +265,16 @@ app.post("/predict_diabetes", (req, res) => {
 	});
 });
 
+app.get("/predict_jaundice/:id", (req, res) => {
+	const useriD = req.params.id;
+	patient.findById(useriD).then((result) => {
+		res.render("predict_jaundice", {
+			title: "Predict Jaundice",
+			User: result,
+		});
+	});
+});
+
 app.post("/predict_jaundice", (req, res) => {
 	const symptoms = {
 		YellowEyes: req.body.YellowEyes,
@@ -313,10 +299,46 @@ app.post("/predict_jaundice", (req, res) => {
 	if (symptoms.LighterDarkerStool != undefined) {
 		diseaseChances += 18;
 	}
+	const userName = req.body.Predict;
+	disease.findOne({ UserName: userName }, function (err, doc) {
+		if (doc) {
+			disease.findOneAndUpdate(
+				{ UserName: userName },
+				{ Jaundice: diseaseChances },
+				{ upsert: true },
+				function (err, doc1) {
+					if (err) return res.send(500, { error: err });
+				}
+			);
+		} else {
+			const data = {
+				UserName: userName,
+				HeartAttack: null,
+				Diabetes: null,
+				Jaundice: diseaseChances,
+				Malaria: null,
+				Appendicitis: null,
+				Tuberculosis: null,
+			};
+			var myData = new disease(data);
+			myData.save();
+		}
+	});
+
 	res.render("predict_jaundice", {
 		title: "Predict Jaundice",
 		symptoms: symptoms,
 		Chances: diseaseChances,
+	});
+});
+
+app.get("/predict_malaria/:id", (req, res) => {
+	const useriD = req.params.id;
+	patient.findById(useriD).then((result) => {
+		res.render("predict_malaria", {
+			title: "Predict Malaria",
+			User: result,
+		});
 	});
 });
 
@@ -344,10 +366,46 @@ app.post("/predict_malaria", (req, res) => {
 	if (symptoms.LossOfAppetite != undefined) {
 		diseaseChances += 15;
 	}
+	const userName = req.body.Predict;
+	disease.findOne({ UserName: userName }, function (err, doc) {
+		if (doc) {
+			disease.findOneAndUpdate(
+				{ UserName: userName },
+				{ Malaria: diseaseChances },
+				{ upsert: true },
+				function (err, doc1) {
+					if (err) return res.send(500, { error: err });
+				}
+			);
+		} else {
+			const data = {
+				UserName: userName,
+				HeartAttack: null,
+				Diabetes: null,
+				Jaundice: null,
+				Malaria: diseaseChances,
+				Appendicitis: null,
+				Tuberculosis: null,
+			};
+			var myData = new disease(data);
+			myData.save();
+		}
+	});
+
 	res.render("predict_malaria", {
 		title: "Predict Malaria",
 		symptoms: symptoms,
 		Chances: diseaseChances,
+	});
+});
+
+app.get("/predict_appendicitis/:id", (req, res) => {
+	const useriD = req.params.id;
+	patient.findById(useriD).then((result) => {
+		res.render("predict_appendicitis", {
+			title: "Predict Appendicitis",
+			User: result,
+		});
 	});
 });
 
@@ -375,10 +433,46 @@ app.post("/predict_appendicitis", (req, res) => {
 	if (symptoms.LossOfAppetite != undefined) {
 		diseaseChances += 20;
 	}
+	const userName = req.body.Predict;
+	disease.findOne({ UserName: userName }, function (err, doc) {
+		if (doc) {
+			disease.findOneAndUpdate(
+				{ UserName: userName },
+				{ Appendicitis: diseaseChances },
+				{ upsert: true },
+				function (err, doc1) {
+					if (err) return res.send(500, { error: err });
+				}
+			);
+		} else {
+			const data = {
+				UserName: userName,
+				HeartAttack: null,
+				Diabetes: null,
+				Jaundice: null,
+				Malaria: null,
+				Appendicitis: diseaseChances,
+				Tuberculosis: null,
+			};
+			var myData = new disease(data);
+			myData.save();
+		}
+	});
+
 	res.render("predict_appendicitis", {
 		title: "Predict Appendicitis",
 		symptoms: symptoms,
 		Chances: diseaseChances,
+	});
+});
+
+app.get("/predict_tuberculosis/:id", (req, res) => {
+	const useriD = req.params.id;
+	patient.findById(useriD).then((result) => {
+		res.render("predict_tuberculosis", {
+			title: "Predict Tuberculosis",
+			User: result,
+		});
 	});
 });
 
@@ -406,6 +500,32 @@ app.post("/predict_tuberculosis", (req, res) => {
 	if (symptoms.Fatigue != undefined) {
 		diseaseChances += 22;
 	}
+	const userName = req.body.Predict;
+	disease.findOne({ UserName: userName }, function (err, doc) {
+		if (doc) {
+			disease.findOneAndUpdate(
+				{ UserName: userName },
+				{ Tuberculosis: diseaseChances },
+				{ upsert: true },
+				function (err, doc1) {
+					if (err) return res.send(500, { error: err });
+				}
+			);
+		} else {
+			const data = {
+				UserName: userName,
+				HeartAttack: null,
+				Diabetes: null,
+				Jaundice: null,
+				Malaria: null,
+				Appendicitis: null,
+				Tuberculosis: diseaseChances,
+			};
+			var myData = new disease(data);
+			myData.save();
+		}
+	});
+
 	res.render("predict_tuberculosis", {
 		title: "Predict Tuberculosis",
 		symptoms: symptoms,
