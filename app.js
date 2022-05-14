@@ -656,6 +656,7 @@ app.post(
 			.withMessage("Name must be of 3 characters long.")
 			.matches(/^[A-Za-z\s]+$/)
 			.withMessage("Name must be alphabetic."),
+		check("Gender").exists().withMessage("Gender Selection is required"),
 		check("Email")
 			.exists()
 			.withMessage("Email is required")
@@ -744,6 +745,7 @@ app.post(
 			.withMessage("Name must be of 3 characters long.")
 			.matches(/^[A-Za-z\s]+$/)
 			.withMessage("Name must be alphabetic."),
+		check("Gender").exists().withMessage("Gender Selection is required"),
 		check("Email")
 			.exists()
 			.withMessage("Email is required")
@@ -904,6 +906,7 @@ app.post(
 			.withMessage("Name must be of 3 characters long.")
 			.matches(/^[A-Za-z\s]+$/)
 			.withMessage("Name must be alphabetic."),
+		check("Gender").exists().withMessage("Gender Selection is required"),
 		check("Email")
 			.exists()
 			.withMessage("Email is required")
@@ -1088,6 +1091,7 @@ app.post(
 			.withMessage("Name must be of 3 characters long.")
 			.matches(/^[A-Za-z\s]+$/)
 			.withMessage("Name must be alphabetic."),
+		check("Gender").exists().withMessage("Gender Selection is required"),
 		check("Email")
 			.exists()
 			.withMessage("Email is required")
