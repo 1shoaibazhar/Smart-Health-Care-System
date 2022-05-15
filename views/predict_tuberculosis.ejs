@@ -213,7 +213,14 @@ a.button:hover{
                     <h5 style="display:inline;">You have a <%= Chances %> percent chance of having Tuberculosis</h5>
                   </div>
                   <% } %>
-    
+                  <% if(typeof selection != 'undefined') { %>
+                      <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                      <%= selection %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                  <% } %>
               </form>
               </div>
             </div>
