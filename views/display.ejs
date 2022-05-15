@@ -146,11 +146,10 @@ a.button:hover{
                         <h6>Action</h6>    
                        </div>
                 </div>
+                
                 <hr size="4px">
                   <% if (users.length > 0) { %>  
-                  
                       <% users.forEach(user => { %>
-
                         <div class="row">
                           <div class="col-md-3 mb-4">  
                           <h6><%= user.Name %></h6> 
@@ -160,7 +159,6 @@ a.button:hover{
                               <h6>Patient</h6>
                             <% } else { %>
                               <h6><%= user.Profession %> </h6>
-
                             <% } %>  
                           </div>
                              <div class="col-md-3 offset-md-3 mb-4">
@@ -186,8 +184,7 @@ a.button:hover{
 
                   <% } %>
 
-
-                    &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp
+                  &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp
                      
                   <div class="mt-4 pt-2">
                     

@@ -829,6 +829,7 @@ app.get("/delete_patient_admin/:id", (req, res) => {
 	// Searching all users by that name in order to display them on the search page after the current user is deleted
 	patient.findById(useriD).then((result) => {
 		const name = result.Name;
+		const userName = result.UserName;
 		patient
 			.findByIdAndDelete(useriD)
 			.then((result) => {
@@ -840,8 +841,15 @@ app.get("/delete_patient_admin/:id", (req, res) => {
 					});
 				});
 			})
-
 			.catch((err) => console.log(err));
+
+		disease.findOneAndDelete({ UserName: userName }, function (err, docs) {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log("Deleted Patient record from diseases : ", docs);
+			}
+		});
 	});
 });
 
@@ -883,13 +891,21 @@ app.get("/update_patient/:id", (req, res) => {
 app.get("/delete_patient/:id", (req, res) => {
 	const useriD = req.params.id;
 	console.log(useriD);
+	patient.findById(useriD).then((result) => {
+		const userName = result.UserName;
+		disease.findOneAndDelete({ UserName: userName }, function (err, docs) {
+			if (err) {
+				console.log(err);
+			} else {
+				console.log("Deleted Patient record from diseases : ", docs);
+			}
+		});
+	});
 	patient
 		.findByIdAndDelete(useriD)
 		.then((result) => {
-			// res.json({ redirect: '/login'});
 			res.redirect("/");
 		})
-
 		.catch((err) => console.log(err));
 });
 
