@@ -298,18 +298,27 @@
 									/>
 									&nbsp&nbsp
 
+									<% if(typeof alert != 'undefined') { %>
+										<button
+										name="Back"
+										type="button"
+										class="btn btn-primary btn-lg deletebtn custom-btn"
+										style="color: white; text-decoration: none"
+										onclick="history.go(-2)"
+									>
+										Back to Home
+									</button>
+									<% } else { %>
 									<button
 										name="Back"
 										type="button"
-										class="btn btn-primary btn-lg custom-btn"
+										class="btn btn-primary btn-lg deletebtn custom-btn"
+										style="color: white; text-decoration: none"
+										onclick="history.back()"
 									>
-										<a
-											href="/patient_dashboard"
-											style="color: white; text-decoration: none"
-											onclick="history.back()"
-											>Back to Home</a
-										>
+										Back to Home
 									</button>
+									<% } %>
 									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 									<a

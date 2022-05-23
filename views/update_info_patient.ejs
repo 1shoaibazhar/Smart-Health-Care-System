@@ -294,7 +294,17 @@
 										value="Update"
 									/>
 									&nbsp&nbsp
-
+									<% if(typeof alert != 'undefined') { %>
+										<button
+										name="Back"
+										type="button"
+										class="btn btn-primary btn-lg deletebtn custom-btn"
+										style="color: white; text-decoration: none"
+										onclick="history.go(-2)"
+									>
+										Back to Home
+									</button>
+									<% } else { %>
 									<button
 										name="Back"
 										type="button"
@@ -304,8 +314,9 @@
 									>
 										Back to Home
 									</button>
+									<% } %>
 									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
+									
 									<a
 										href="/delete_patient/<%= User._id %>"
 										data-doc="<%= User._id %>"
