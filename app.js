@@ -300,6 +300,62 @@ app.get("/predict_jaundice/:id", (req, res) => {
 	});
 });
 
+app.get("/view_predicted_diseases", (req, res) => {
+	res.render("view_predicted_diseases", { title: "View Predictions" });
+});
+//=======
+//>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
+//************form button  */
+app.post(
+	"/search",
+	urlencodedParser,
+	[
+		// Input Validation Checks using Express Validator
+		check("Name")
+			.exists()
+			.withMessage("Name is required")
+			.isLength({ min: 3 })
+			.withMessage("Name must be of 3 characters long.")
+			.matches(/^[A-Za-z\s]+$/)
+			.withMessage("Name must be alphabetic."),
+	],
+	(req, res) => {
+		const errors = validationResult(req);
+		// if error exists then same page is loaded with errors in form
+		if (!errors.isEmpty()) {
+			const alert = errors.array();
+			res.render("search", { title: "Search Patient/Employee", alert });
+		} else {
+			console.log(req.body);
+			const name = req.body.Name;
+			if (req.body.Designation == "Patient") {
+				patient.find({ Name: name }, function (err, doc) {
+					if (!err) {
+						res.render("display", {
+							title: "Search Results",
+							users: doc,
+							Designation: "Patient",
+						});
+					}
+				});
+			} else {
+				employee.find(
+					{ Name: name, Profession: req.body.Designation },
+					function (err, doc) {
+						if (!err) {
+							res.render("display", {
+								title: "Search Results",
+								users: doc,
+								Designation: "Employee",
+							});
+						}
+					}
+				);
+			}
+		}
+	}
+);
+
 app.post("/predict_jaundice", (req, res) => {
 	const symptoms = {
 		YellowEyes: req.body.YellowEyes,
@@ -367,6 +423,7 @@ app.post("/predict_jaundice", (req, res) => {
 		});
 	}
 });
+
 
 app.get("/predict_malaria/:id", (req, res) => {
 	const useriD = req.params.id;
@@ -627,6 +684,13 @@ app.post("/view", async (req, res) => {
 		.catch((err) => console.log(err));
 });
 
+
+//<<<<<<< HEAD
+app.post("/view_employee", (req, res) => {
+	res.render("display");
+});
+
+
 app.post("/view_predicted_diseases", (req, res) => {
 	let userName = req.body.ViewPredictions;
 	disease.findOne({ UserName: userName }, function (err, doc) {
@@ -643,6 +707,8 @@ app.post("/view_predicted_diseases", (req, res) => {
 		}
 	});
 });
+
+
 
 app.post(
 	"/admin_signup",
