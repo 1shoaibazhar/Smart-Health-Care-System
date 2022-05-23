@@ -103,12 +103,12 @@ app.get("/predict_tuberculosis", (req, res) => {
 	res.render("predict_tuberculosis", { title: "Predict Tuberculosis" });
 });
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 app.get("/view_predicted_diseases", (req, res) => {
 	res.render("view_predicted_diseases", { title: "View Predictions" });
 });
-=======
->>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
+//=======
+//>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 //************form button  */
 app.post(
 	"/search",
@@ -209,7 +209,7 @@ app.post("/view", async (req, res) => {
     .catch((err) => console.log(err));
 });
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 app.post("/view_employee", (req, res) => {
 	res.render("display");
 });
@@ -218,8 +218,8 @@ app.post("/view_predicted_diseases", (req, res) => {
 	res.render("patient_dashboard");
 });
 
-=======
->>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
+//=======
+//>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
 app.post(
 	"/admin_signup",
 	urlencodedParser,
