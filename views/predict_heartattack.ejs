@@ -1,50 +1,15 @@
 <html lang="en">
-<head>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <%- include("./partials/head.ejs") %>
   
-    <!-- Favicons -->
-    <link href="assets/img/icon.webp" rel="icon">
-    <link href="assets/img/icon.webp" rel="Medi-Care-Icon">
-  
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-  
-    <!-- =======================================================
-    * Template Name: Medilab - v4.7.1
-    * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
-
       <style>
-        #header{
-          background-color: #baf260!important; 
-        }
-        #topbar{
-          background-color: rgb(245, 239, 239);
-        }
-
         body{
      background-image: url('/assets/img/departments-1.jpg');
      /* padding:1rem; */
      background-repeat: no-repeat;
      height:940px;
      background-size: cover;
-
+     overflow-x: hidden;
+     overflow-y: hidden;
   }
 
   .custom-btn{
@@ -90,64 +55,15 @@ a.button:hover{
 }
       </style>
 
-
-
-    <title>
-      <%= title %>
-    </title>
-
     <script type="text/javascript">
         function showDiv(toggle){
         document.getElementById(toggle).style.display = 'block';
     }
  </script> 
-  </head>
 
 <body>
-<!-- ======= Top Bar ======= -->
-<div id="topbar" class="d-flex align-items-center fixed-top">
-    <div class="container d-flex justify-content-between">
-      <div class="contact-info d-flex align-items-center ">
-        <i class="bi bi-envelope"></i> <a href="mailto:medicare@gmail.com" style="color: rgb(9, 6, 6);">medicare@gmail.com</a>
-        <i class="bi bi-phone" style="color: rgb(18, 4, 4);">+1 5589 55488 55</i> 
-      </div>
-      <div class="d-none d-lg-flex social-links align-items-center">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="patient_dashboard.html">MediCare </a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
-          <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <!-- <a href="#" class="appointment-btn"><span class="d-none d-md-inline"></span>Make an Appointment</a>
-      <a href="/update_employee/" class="appointment-btn"><span class="d-none d-md-inline">Manage Account</span></a> -->
-      <a href="/" class="appointment-btn"><span class="d-none d-md-inline ">Sign Out</span></a>
-    </div>
-  </header><!-- End Header -->
-
 <br><br><br>
-    <div class="container py-5 h-100">
+    <div class="container py-5 h-50">
         <div class="row justify-content-center align-items-center h-100">
           <div class="col-12 col-lg-9 col-xl-7">
             <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
@@ -155,7 +71,7 @@ a.button:hover{
                   
                 <h3 class="mb-2 pb-1 pb-md-0 mb-md-2">Heart Attack</h3>
                 <h5 class="mb-4 pb-2 pb-md-0 mb-md-5">Please select your symptoms</h5>
-                <form  method="post" action="/update_info_patient">
+                <form  method="post" action="/predict_heartattack">
     
                   <div class="row">
                    
@@ -169,25 +85,38 @@ a.button:hover{
                           
                           class="form-check-input"
                           type="checkbox"
-                          name="Symptoms"
-                          id="Chest Pain"
-                          value="Chest Pain"
-                        
-
-                          checked
-                          
+                          name="ChestPain"
+                          id="ChestPain"
+                          value="ChestPain"
+                          <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                          <% } %>  
+                          <% if(typeof symptoms != 'undefined') { %>
+                            disabled="true"
+                            <% if(typeof symptoms.ChestPain != 'undefined') { %>
+                                checked="true"
+                            <% } %>
+                          <% } %>
                         />
-                        <label class="form-check-label" for="Chest Pain">Chest Pain</label>
+                        <label class="form-check-label" for="ChestPain">Chest Pain</label>
                       </div>
                       <br>
                       <div class="form-check form-check-inline">
                         <input
                         class="form-check-input"
                         type="checkbox"
-                        name="Symptoms"
+                        name="Bodyache"
                         id="Bodyache"
                         value="Bodyache"
-                          
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                        <% } %>
+                        <% if(typeof symptoms != 'undefined') { %>
+                          disabled="true"
+                          <% if(typeof symptoms.Bodyache != 'undefined') { %>
+                              checked="true"
+                          <% } %>
+                        <% } %>
                         />
                         <label class="form-check-label" for="Bodyache">Bodyache</label>
                       </div>
@@ -196,10 +125,18 @@ a.button:hover{
                         <input
                         class="form-check-input"
                         type="checkbox"
-                        name="Symptoms"
+                        name="Lightheaded"
                         id="Lightheaded"
                         value="Lightheaded"
-                          
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                        <% } %>
+                        <% if(typeof symptoms != 'undefined') { %>
+                          disabled="true"
+                          <% if(typeof symptoms.Lightheaded != 'undefined') { %>
+                            checked="true"
+                          <% } %>
+                        <% } %> 
                         />
                         <label class="form-check-label" for="Lightheaded">Lightheaded</label>
                       </div>
@@ -208,10 +145,18 @@ a.button:hover{
                         <input
                         class="form-check-input"
                         type="checkbox"
-                        name="Symptoms"
+                        name="Sweating"
                         id="Sweating"
                         value="Sweating"
-                          
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                        <% } %>
+                        <% if(typeof symptoms != 'undefined') { %>
+                          disabled="true"
+                          <% if(typeof symptoms.Sweating != 'undefined') { %>
+                              checked="true"  
+                          <% } %>
+                        <% } %>
                         />
                         <label class="form-check-label" for="Sweating">Sweating</label>
                       </div>
@@ -220,12 +165,20 @@ a.button:hover{
                         <input
                         class="form-check-input"
                         type="checkbox"
-                        name="Symptoms"
-                        id="Shortness of Breath"
-                        value="Shortness of Breath"
-                          
+                        name="ShortnessOfBreath"
+                        id="ShortnessOfBreath"
+                        value="ShortnessOfBreath"
+                        <% if(typeof selection != 'undefined') { %>
+                            disabled="true"
+                        <% } %>
+                        <% if(typeof symptoms != 'undefined') { %>
+                          disabled="true"
+                          <% if(typeof symptoms.ShortnessOfBreath != 'undefined') { %>
+                            checked="true"
+                          <% } %>
+                        <% } %>  
                         />
-                        <label class="form-check-label" for="Shortness of Breath">Shortness of Breath</label>
+                        <label class="form-check-label" for="ShortnessOfBreath">Shortness of Breath</label>
                       </div>
     
                     </div>       
@@ -233,104 +186,45 @@ a.button:hover{
                 </div>
     
                   <div class="mt-4 pt-2">
-                    <button name="Predict" type="button" class="btn btn-primary btn-lg custom-btn" onclick="showDiv('toggle')"><a href = "#" style=" color:white; text-decoration:none;">Predict</a></button>
-                    &nbsp&nbsp
-                  
-                    <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.back()">Back to Dashboard</button>
-                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    
+                    <% if(typeof Chances == 'undefined') { %>
+                      <% if(typeof selection == 'undefined') { %>
+                        <button name="Predict" type="submit" class="btn btn-primary btn-lg custom-btn" value="<%= User.UserName %>">Predict</a></button>
+                        &nbsp&nbsp
+                        <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-1)">Back to Dashboard</button>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                      <% } else { %>
+                        <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-2)">Back to Dashboard</button>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                      <% } %>
+                    <% } else { %>
+                      <button name="Back" type="button" class="btn btn-primary btn-lg custom-btn" onclick="history.go(-2)">Back to Dashboard</button>
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  
+                    <% } %>
                   </div>
 
                   <br><br>
-                  <div Id="toggle" class="predict"  style="display:none;">
-                    
-                   <h5 style="color:red;display:inline;">Prediction : </h5>
-                   <h5 style="display:inline;">You have a 50% chance of having a heart attack</h5>
+                   <% if(typeof Chances != 'undefined') { %>
+                   <div class="predict">
+                    <h5 style="color:red;display:inline;">Prediction : </h5>
+                    <h5 style="display:inline;">You have a <%= Chances %> percent chance of having a heart attack</h5>
                   </div>
-    
+                  <% } %>
+                  <% if(typeof selection != 'undefined') { %>
+                      <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                      <%= selection %>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                  <% } %>
               </form>
               </div>
             </div>
           </div>
         </div>
     </div> 
-    <!-- ======= Footer ======= -->
-  <footer id="footer">
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>MediCare</h3>
-            <p>
-              MediCare Main Head Office<br>
-              Street 17, F7<br>
-              Islamabad <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> medicare@gmail.com<br>
-            </p>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Diagnosis</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Treatment and Prescription</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Health Logs</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Lab Results</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Schedule Appointments</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe and recieve your monthly newsletter in Rs 2500</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container d-md-flex py-4">
-
-      <div class="me-md-auto text-center text-md-start">
-        <div class="copyright">
-          &copy; Copyright <strong><span>MediCare</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
-          Designed by <a href="https://bootstrapmade.com/">MediCare</a>
-        </div>
-      </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <div id="preloader"></div>
+   
+  <!-- <div id="preloader"></div> -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
