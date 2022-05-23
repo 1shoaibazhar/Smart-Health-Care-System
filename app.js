@@ -300,8 +300,6 @@ app.get("/predict_jaundice/:id", (req, res) => {
   });
 });
 
-<<<<<<< HEAD
-//<<<<<<< HEAD
 app.get("/view_predicted_diseases", (req, res) => {
 	res.render("view_predicted_diseases", { title: "View Predictions" });
 });
@@ -357,7 +355,7 @@ app.post(
 		}
 	}
 );
-=======
+
 app.post("/predict_jaundice", (req, res) => {
   const symptoms = {
     YellowEyes: req.body.YellowEyes,
@@ -425,7 +423,7 @@ app.post("/predict_jaundice", (req, res) => {
     });
   }
 });
->>>>>>> 89a0b749489b9df81e63264ed592826d56dc6130
+
 
 app.get("/predict_malaria/:id", (req, res) => {
   const useriD = req.params.id;
@@ -686,14 +684,13 @@ app.post("/view", async (req, res) => {
     .catch((err) => console.log(err));
 });
 
-<<<<<<< HEAD
+
 //<<<<<<< HEAD
 app.post("/view_employee", (req, res) => {
 	res.render("display");
 });
 
-=======
->>>>>>> 89a0b749489b9df81e63264ed592826d56dc6130
+
 app.post("/view_predicted_diseases", (req, res) => {
   let userName = req.body.ViewPredictions;
   disease.findOne({ UserName: userName }, function (err, doc) {
@@ -711,11 +708,8 @@ app.post("/view_predicted_diseases", (req, res) => {
   });
 });
 
-<<<<<<< HEAD
-//=======
-//>>>>>>> cf05fcf6a7b57b8a6446009494a46f85e5eda23f
-=======
->>>>>>> 89a0b749489b9df81e63264ed592826d56dc6130
+
+
 app.post(
   "/admin_signup",
   urlencodedParser,
